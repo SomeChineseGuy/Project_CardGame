@@ -6,12 +6,46 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
+
+    <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
     <h1>Hello World!</h1>
+    <section id="hand-container">
+
+    </section>
+    <script id="hand-template" type="text/x-handlebars-template">
+      <section class='opp_hand'>{{oppHandCount}}</section>
+      <section class='opponent_discard'>{{opponentDiscard}}</section>
+      <section class='public'>
+        <ul class='deck'>
+          {{#if deck}}
+            <li>
+              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/bicycle-card.jpg'/>
+            </li>
+          {{/if}}
+          {{#if discard}}
+            <li>
+              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/j-od.jpg'/>
+            </li>
+          {{/if}}
+        </ul>
+      </section>
+      <section class='user_discard'>{{userDiscard}}</section>
+      <section class='userHand'>
+        <ul class="user_hand">
+          {{#each userhand}}
+            <li>
+              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/j-od.jpg'/>{{this}}
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    </script>
   </body>
 </html>

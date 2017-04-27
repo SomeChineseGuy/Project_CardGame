@@ -43,6 +43,19 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// TEST FOR TEMPLATE!!!!!!!!!!!!!!!!!!
+app.get('/json', (req, res) => {
+  const data =  {
+    deck: true,
+    discard: 1,
+    userhand: [7,8,9,10],
+    oppHandCount: 5,
+    userDiscard: [48, 47, 46],
+    opponentDiscard: [52, 51, 50]
+  };
+  res.json(data);
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });

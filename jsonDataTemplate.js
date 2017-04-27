@@ -13,5 +13,5 @@ const user2 = {
   userhand: [7,8,9,10],
   oppHandCount: 5,
   userDiscard: [48, 47, 46],
-  userDiscard: [52, 51, 50]
+  opponentDiscard: [52, 51, 50]
 }

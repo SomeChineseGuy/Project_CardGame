@@ -2,18 +2,21 @@
 
 require('dotenv').config();
 
+
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-
+const server      = require('http').createServer(app);
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+
+const io          =require('socket.io')(server);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -43,6 +46,18 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.listen(PORT, () => {
+app.get('/game', function(req, res,next) {
+   res.sendFile(__dirname + '/public/game1.html');
+});
+
+
+server.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+
+io.on('connection', function(socket) {
+  socket.on('add user', function(username){
+    console.log(username);
+  })
+})

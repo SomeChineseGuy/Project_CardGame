@@ -50,14 +50,42 @@ app.get('/game', function(req, res,next) {
    res.sendFile(__dirname + '/public/game1.html');
 });
 
+app.get('/game2', function(req, res,next) {
+   res.sendFile(__dirname + '/public/game2.html');
+});
 
 server.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
+const testObj = {
+  test: 1,
+  test2: 2,
+  test3: 3
+}
 
-io.on('connection', function(socket) {
+const testObj2 = {
+  test: 'a',
+  test2: 'b',
+  test3: 'c'
+}
+
+const game1 = io.of('/game1');
+game1.on('connection', function(socket) {
   socket.on('add user', function(username){
-    console.log(username);
+    console.log(`Welcome to game 1 ${username}`);
+    socket.emit('game object', JSON.stringify(testObj));
   })
 })
+
+const game2 = io.of('/game2');
+game2.on('connection', function(socket) {
+  socket.on('add user', function(username){
+    console.log(`Welcome to game 2 ${username}`);
+    socket.emit('game object', JSON.stringify(testObj2));
+  })
+})
+
+
+
+

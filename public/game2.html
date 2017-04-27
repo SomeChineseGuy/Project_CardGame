@@ -5,8 +5,8 @@
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io('/game1');
-  socket.emit('add user', 'player1');
+  var socket = io('/game2');
+  socket.emit('add user', 'player2');
   socket.on('game object', (data) =>{
     console.log(data);
   });

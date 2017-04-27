@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/game', function(req, res,next) {
-   res.sendFile(__dirname + '/public/game1.html');
+   res.render("game1");
 });
 
 app.get('/game2', function(req, res,next) {

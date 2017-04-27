@@ -14,7 +14,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-
+// const sessions    = require('cookie-sessions');
 
 const io          =require('socket.io')(server);
 // Seperated Routes for each Resource
@@ -58,25 +58,49 @@ server.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-const testObj = {
-  test: 1,
-  test2: 2,
-  test3: 3
+const user1 = {
+  deck: true,
+  discard: 1,
+  userhand: [2,3,4,5,6],
+  oppHandCount: 4,
+  userDiscard: [52,51,50],
+  opponentDiscard: [48,47,46]
 }
 
-const testObj2 = {
-  test: 'a',
-  test2: 'b',
-  test3: 'c'
+const user2 = {
+  deck: true,
+  discard: 1,
+  userhand: [7,8,9,10],
+  oppHandCount: 5,
+  userDiscard: [48, 47, 46],
+  opponentDiscard: [52, 51, 50]
 }
+
+let connectedPlayers = {
+  host: null,
+  guest: null
+};
 
 const game1 = io.of('/game1');
 game1.on('connection', function(socket) {
-  socket.on('add user', function(username){
-    console.log(`Welcome to game 1 ${username}`);
-    socket.emit('game object', JSON.stringify(testObj));
-  })
-})
+
+  socket.on('add user', function(username) {
+    if(connectedPlayers.host === null) {
+      connectedPlayers.host = socket.id;
+    } else {
+      connectedPlayers.guest = socket.id;
+    }
+    const connections = io.of('/game1').connected;
+
+    if(connectedPlayers.host) {
+      connections[connectedPlayers.host].emit('game object', "you are the host");
+    }
+
+    if(connectedPlayers.guest) {
+      connections[connectedPlayers.guest].emit('game object', "you are the guest");
+    }
+  });
+});
 
 const game2 = io.of('/game2');
 game2.on('connection', function(socket) {

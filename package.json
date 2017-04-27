@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cookie-session": "^2.0.0-beta.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
@@ -23,6 +24,7 @@
     "node-sass-middleware": "^0.9.8",
     "nodemon": "^1.11.0",
     "pg": "^6.0.2",
+    "sessions": "0.0.2-7",
     "socket.io": "^1.7.3"
   },
   "devDependencies": {

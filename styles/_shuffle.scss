@@ -1,0 +1,67 @@
+// Remember to change POSITION to "absolute"
+
+#all {
+	position: relative;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 200px;
+	width: 200px;
+}
+
+.shuffle
+ {
+	position: absolute;
+  background:url('http://chetart.com/blog/wp-content/uploads/2012/05/playing-card-back.jpg');
+	background-size:152px 213px;
+	height: 212px;
+	width: 150px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+}
+
+#card1 {
+	z-index: 1;
+	animation: a 2s 0.5s infinite;
+}
+
+#card2 {
+	animation: b 2s 0.5s infinite;
+}
+#text{
+	position:absolute;
+	top:210px;
+	text-align:center;
+	z-index:5;
+	width:150px;
+	color:white;
+	animation: c 2s infinite;
+}
+@keyframes a {
+	0% {}
+	30% {
+		transform: translateX(205px) rotate(70deg) rotateY(80deg);
+	}
+	
+	100% {
+		rotate:(0deg);
+	}
+}
+
+@keyframes b {
+	0% {}
+	100% {
+		z-index: 2;
+	}
+}
+@keyframes c {
+	0% {transform: translateY(0px)}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {transform: translateY(0px)}
+}

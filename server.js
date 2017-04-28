@@ -29,9 +29,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
+  dest: __dirname + "/public",
+  outputStyle: 'expanded',
+  prefix: '/styles',
+  force: true
 }));
 app.use(express.static("public"));
 

@@ -13,4 +13,10 @@
 	height: 212px;
 	width: 150px;
 	border-radius: 5px;
+	// DISPLAY ONLY CHANGE on production
+	  &.card:hover {
+    box-shadow: 0 0 .5em .25em springgreen, inset 0 0 .5em .25em palegreen;
+    cursor: unset;
+    top: -20px;
+  }
 }

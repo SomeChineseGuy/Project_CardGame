@@ -6,79 +6,13 @@
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   </head>
   <body>
-    <section class="card-deck">
-      <div class="card">
-       <div class="hide front-card">
-         Deck Display
-       </div>
-      </div>
+    <section class="player-hand">
+      <span class="card-front" data-rank-idx="2" data-suit-idx="2"> </span>
+      <span class="card-front" data-rank-idx="10" data-suit-idx="0"> </span>
+      <span class="card-front" data-rank-idx="4" data-suit-idx="2"> </span>
+      <span class="card-front" data-rank-idx="3" data-suit-idx="1"> </span>
+      <span class="card-front" data-rank-idx="2" data-suit-idx="2"> </span>
+      <span class="card-front" data-rank-idx="5" data-suit-idx="1"> </span>
     </section>
-    <section class="card-front">
-      <div class="hand">
-        <div class="card suitdiamonds">
-          <p>A</p>
-        </div>
-        <div class="card suithearts">
-          <p>A</p>
-        </div>
-        <div class="card suitclubs">
-          <p>A</p>
-        </div>
-        <div class="card suitspades">
-          <p>A</p>
-        </div>
-      </div>
-    </section>
-    <section class="discard4">
-      <div class="hand spread">
-        <div class="card suitdiamonds">
-          <p>A</p>
-        </div>
-        <div class="card suithearts">
-          <p>A</p>
-        </div>
-        <div class="card suitclubs">
-          <p>A</p>
-        </div>
-        <div class="card suitspades">
-          <p>A</p>
-        </div>
-     </div>
-    </section>
-    <section class="discard3">
-      <div class="hand spread2">
-        <div class="card suitdiamonds">
-          <p>A</p>
-        </div>
-        <div class="card suithearts">
-          <p>A</p>
-        </div>
-        <div class="card suitclubs">
-          <p>A</p>
-        </div>
-     </div>
-    </section>
-    <section class="card-back" class="shuffling-cards">
-      <div id="all">
-        <div id="card1" class="shuffle"></div>
-        <div id="card2" class="shuffle"></div>
-        <div id="text" class="text">
-          <p>Card shuffling</p>
-        </div>
-      </div>
-    </section>
-    <section class="card-back">
-      <div class="card">
-        <div class="inner bg-pattern"></div>
-      </div>
-    </section>
-     <!--Player Buttons for beginning of turn -->
-    <input type="button" class="deck-draw" value="Draw From Deck">
-    <input type="button" class="last-discarded" value="Draw Last Discarded">
-    <input type="button" class="all-discarded" value="Draw Discard Pile">
-    <!-- Player Buttons for middle of turn -->
-    <input type="button" class="player-discard" value="Discard A Card">
-    <input type="button" class="drop-3" value="Drop 3 Cards">
-    <input type="button" class="add-to-3" value="Add to 3">
   </body>
 </html>

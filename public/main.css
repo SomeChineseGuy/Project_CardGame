@@ -1,0 +1,96 @@
+@charset "UTF-8";
+.card-front {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+  height: 220px;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+.card-front.card:hover {
+  box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
+  cursor: pointer;
+  top: -20px;
+}
+
+.card-front::before {
+  bottom: 0;
+  right: .1em;
+}
+
+.card-front::after {
+  left: .2em;
+}
+
+.card-front[data-rank-idx='0']::before {
+  content: "A";
+}
+
+.card-front[data-rank-idx='1']::before {
+  content: "2";
+}
+
+.card-front[data-rank-idx='2']::before {
+  content: "3";
+}
+
+.card-front[data-rank-idx='3']::before {
+  content: "4";
+}
+
+.card-front[data-rank-idx='4']::before {
+  content: "5";
+}
+
+.card-front[data-rank-idx='5']::before {
+  content: "6";
+}
+
+.card-front[data-rank-idx='6']::before {
+  content: "7";
+}
+
+.card-front[data-rank-idx='7']::before {
+  content: "8";
+}
+
+.card-front[data-rank-idx='8']::before {
+  content: "9";
+}
+
+.card-front[data-rank-idx='9']::before {
+  content: "10";
+}
+
+.card-front[data-rank-idx='10']::before {
+  content: "J";
+}
+
+.card-front[data-rank-idx='11']::before {
+  content: "Q";
+}
+
+.card-front[data-rank-idx='12']::before {
+  content: "K";
+}
+
+.card-front[data-suit-idx='0']::after {
+  content: "♦";
+}
+
+.card-front[data-suit-idx='1']::after {
+  content: "♣";
+}
+
+.card-front[data-suit-idx='2']::after {
+  content: "♥";
+}
+
+.card-front[data-suit-idx='3']::after {
+  content: "♠";
+}

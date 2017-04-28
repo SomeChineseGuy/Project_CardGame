@@ -3,10 +3,11 @@
 <head>
   <meta encoding="utf8">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script>
  var socket = io('/game1');
-  socket.emit('add user', 'player1');
+  console.log(document.cookie);
+  socket.emit('add user', "");
   socket.on('game object', (data) =>{
     console.log(data);
   });

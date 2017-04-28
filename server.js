@@ -14,11 +14,19 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-// const sessions    = require('cookie-sessions');
+const cookieSession = require('cookie-session');
 
 const io          =require('socket.io')(server);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+
+const sessionMiddleware = cookieSession({
+  name: 'session',
+  keys: ['Lighthouse'],
+  maxAge: 24 * 60 * 60 * 1000
+});
+
+app.use(sessionMiddleware);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -46,7 +54,13 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get('/login/:id', (req, res) => {
+ req.session.userid = req.params.id;
+ res.redirect('/');
+});
+
 app.get('/game', function(req, res,next) {
+
    res.render("game1");
 });
 
@@ -76,29 +90,59 @@ const user2 = {
   opponentDiscard: [52, 51, 50]
 }
 
+const authUsers = {
+
+}
+
+
 let connectedPlayers = {
-  host: null,
-  guest: null
+  host: {
+    id: null,
+    socket: null
+  },
+  guest: {
+    id: null,
+    socket: null
+  }
 };
+
+// var sessionMiddleware = cookieSession({
+//   name: 'session',
+//   keys: ['Lighthouse'],
+//   maxAge: 24 * 60 * 60 * 1000
+// });
+
+io.use(function(socket, next) {
+    sessionMiddleware(socket.request, socket.request.res, next);
+});
 
 const game1 = io.of('/game1');
 game1.on('connection', function(socket) {
-
   socket.on('add user', function(username) {
-    if(connectedPlayers.host === null) {
-      connectedPlayers.host = socket.id;
+
+    if (connectedPlayers.host.socket === null) {
+      connectedPlayers.host.socket = socket.id;
+      connectedPlayers.host.id = socket.request.session.userid;
     } else {
-      connectedPlayers.guest = socket.id;
+      connectedPlayers.guest.socket = socket.id;
+      connectedPlayers.guest.id = socket.request.session.userid;
     }
     const connections = io.of('/game1').connected;
 
-    if(connectedPlayers.host) {
-      connections[connectedPlayers.host].emit('game object', "you are the host");
+    if (connections) {
+      if (connectedPlayers.host.socket) {
+        const host = connections[connectedPlayers.host.socket];
+        if (host) {
+          host.emit('game object', `you are the host with userid ${connectedPlayers.host.id} and ${connectedPlayers.host.socket}`);
+        }
+      }
+
+      if (connectedPlayers.guest.socket) {
+        connections[connectedPlayers.guest.socket].emit('game object', `you are the guest with userid ${connectedPlayers.guest.id} and ${connectedPlayers.guest.socket}`);
+
+      }
     }
 
-    if(connectedPlayers.guest) {
-      connections[connectedPlayers.guest].emit('game object', "you are the guest");
-    }
   });
 });
 

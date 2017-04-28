@@ -16,6 +16,11 @@ body {
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+    &.card:hover {
+    box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
+    cursor: pointer;
+    top: -20px;
+  }
 }
 
 .card p {
@@ -61,7 +66,9 @@ div[class*='suit']:after {
 .hand {
   margin: 50px;
 }
- 
+
+//This is for display only, it can be moved
+
 .hand:before,
 .hand:after {
     content:"";
@@ -71,15 +78,3 @@ div[class*='suit']:after {
 .hand:after {
     clear:both;
 }
- 
-.card:hover {
-  box-shadow: 0 0 .5em .25em PaleGreen, inset 0 0 .5em .25em LightGreen;
-  cursor: pointer;
-}
-
-
-
-
-
-
-

@@ -2,6 +2,7 @@
   width: 350px;
   height: 250px;
   position: relative;
+  
 }
  
 .spread > .card {
@@ -13,6 +14,11 @@
   -o-transition: top 0.3s ease, left 0.3s ease;
   -ms-transition: top 0.3s ease, left 0.3s ease;
   transition: top 0.3s ease, left 0.3s ease;
+  &.card:hover {
+    box-shadow: 0 0 .5em .25em tomato, inset 0 0 .5em .25em red;
+    cursor: unset;
+    top: -20px;
+  }
 }
 
 .spread:hover .suitdiamonds {

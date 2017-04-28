@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>Game</title>
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   </head>
   <body>
-    <section class="card-back">
+    <section class="card-deck">
       <div class="card">
-       <div class="inner bg-pattern">
+       <div class="hide front-card">
+         Deck Display
        </div>
       </div>
     </section>
@@ -65,7 +67,12 @@
         </div>
       </div>
     </section>
-    <!-- Player Buttons for beginning of turn -->
+    <section class="card-back">
+      <div class="card">
+        <div class="inner bg-pattern"></div>
+      </div>
+    </section>
+     <!--Player Buttons for beginning of turn -->
     <input type="button" class="deck-draw" value="Draw From Deck">
     <input type="button" class="last-discarded" value="Draw Last Discarded">
     <input type="button" class="all-discarded" value="Draw Discard Pile">

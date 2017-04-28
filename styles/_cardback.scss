@@ -1,0 +1,35 @@
+.inner {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top: 6%;
+}
+
+.bg-pattern {
+	width: 80%;
+	height: 86%;
+	border-radius: 13px;
+	border: 2px solid red;
+	background-color: #fff;
+	background-image: 
+	repeating-linear-gradient(45deg, 
+      transparent 1px, transparent 1px, transparent 3px, transparent 4px,
+      red 1px, red 5px, transparent 3px, transparent 8px,
+      red 1px, red 9px, transparent 3px, transparent 12px,
+      red 1px, red 13px, transparent 3px, transparent 16px,
+      red 1px, red 17px, transparent 3px, transparent 20px,
+      red 1px, red 21px, transparent 3px, transparent 24px,
+      red 1px, red 25px, transparent 12px, transparent 37px      
+  	),
+	 repeating-linear-gradient(135deg, 
+      transparent 1px, transparent 1px, transparent 3px, transparent 4px,
+      red 1px, red 5px, transparent 3px, transparent 8px,
+      red 1px, red 9px, transparent 3px, transparent 12px,
+      red 1px, red 13px, transparent 3px, transparent 16px,
+      red 1px, red 17px, transparent 3px, transparent 20px,
+      red 1px, red 21px, transparent 3px, transparent 24px,
+      red 1px, red 25px, transparent 12px, transparent 37px   
+	),
+	linear-gradient(75deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.0) 60%);
+}

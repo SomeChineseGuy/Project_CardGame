@@ -16,7 +16,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
 
-const io          =require('socket.io')(server);
+const io          = require('socket.io')(server);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -40,9 +40,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
+  dest: __dirname + "/public",
+  outputStyle: 'expanded',
+  prefix: '/styles',
+  force: true
 }));
 app.use(express.static("public"));
 

@@ -16,7 +16,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
 
-const io          =require('socket.io')(server);
+const io          = require('socket.io')(server);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -40,9 +40,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
+  dest: __dirname + "/public",
+  outputStyle: 'expanded',
+  prefix: '/styles',
+  force: true
 }));
 app.use(express.static("public"));
 
@@ -52,6 +53,19 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+// TEST FOR TEMPLATE!!!!!!!!!!!!!!!!!!
+app.get('/json', (req, res) => {
+  const data =  {
+    deck: true,
+    discard: 1,
+    userhand: [7,8,9,10],
+    oppHandCount: 5,
+    userDiscard: [48, 47, 46],
+    opponentDiscard: [52, 51, 50]
+  };
+  res.json(data);
 });
 
 app.get('/login/:id', (req, res) => {
@@ -234,7 +248,3 @@ game2.on('connection', function(socket) {
     socket.emit('game object', JSON.stringify(testObj2));
   })
 })
-
-
-
-

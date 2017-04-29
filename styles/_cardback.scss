@@ -1,0 +1,22 @@
+.inner {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
+.bg-pattern {
+	width: 80%;
+	height: 86%;
+  background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
+	background-size:152px 213px;
+	height: 212px;
+	width: 150px;
+	border-radius: 5px;
+	// DISPLAY ONLY CHANGE on production
+	  &.card:hover {
+    box-shadow: 0 0 .5em .25em springgreen, inset 0 0 .5em .25em palegreen;
+    cursor: unset;
+    top: -20px;
+  }
+}

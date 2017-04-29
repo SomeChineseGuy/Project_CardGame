@@ -164,23 +164,22 @@ function userID(socketid) { return players.host.socket.id === socketid ? players
 function oppID (socketid) { return players.host.socket.id === socketid ? players.guest.id : players.host.id; }
 function userSocket (socketid) { return players.host.socket.id === socketid ? players.host.socket : players.guest.socket;}
 function oppSocket (socketid) { return players.host.socket.id === socketid ? players.guest.socket : players.host.socket;}
-function resetPlayer(obj) { obj.id = null; obj.socket = null};
+function resetPlayer(obj) { obj.id = null; obj.socket = null; obj.state = null};
 function userState(socketid) {return players.host.socket.id === socketid ? players.host.state : players.guest.state;}
 function oppState (socketid) { return players.host.socket.id === socketid ? players.guest.state : players.host.state; }
 function userHostGuest (socketid) {return players.host.socket.id === socketid ? 'host' : 'guest'}
 function oppHostGuest (socketid) {return players.host.socket.id === socketid ? 'guest' : 'host'}
 
-
 let players = {
   host: {
     id: null,
     socket: null,
-    state: user1
+    state: user1,
   },
   guest: {
     id: null,
     socket: null,
-    state: user2
+    state: user2,
   }
 };
 
@@ -223,22 +222,22 @@ game1.on('connection', function(socket) {
 
   });
   socket.on('disconnect', () =>{
-      if(socket.id === players.host.socket.id){
-        resetPlayer(players.host);
-        console.log(players);
-      }
-      else{
-        resetPlayer(players.guest);
-        console.log(players);
-      }
-    })
+    if(socket.id === players.host.socket.id){
+      resetPlayer(players.host);
+      console.log(players);
+    }
+    else{
+      resetPlayer(players.guest);
+      console.log(players);
+    }
+  });
   socket.on('draw', (socketid)=> {
     console.log(socketid);
     players[userHostGuest(socketid)].state = user;
     players[oppHostGuest(socketid)].state = opp;
     userSocket(socketid).emit('game object', userState(socketid));
     oppSocket(socketid).emit('game object', oppState(socketid));
-  })
+  });
 });
 
 const game2 = io.of('/game2');

@@ -3,94 +3,616 @@
   position: relative;
   float: left;
   margin-right: 10px;
-  width: 150px;
-  height: 220px;
+  width: 5em;
+  height: 7.93em;
   border-radius: 10px;
-  background: #fff;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+  background-color: red;
+  overflow: hidden;
+}
+
+.card-front .card-front:before, .card-front .card-front:after {
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='0']::after {
+  content: "A";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='1']::after {
+  content: "2";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='2']::after {
+  content: "3";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='3']::after {
+  content: "4";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='4']::after {
+  content: "5";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='5']::after {
+  content: "6";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='6']::after {
+  content: "7";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='7']::after {
+  content: "8";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='8']::after {
+  content: "9";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='9']::after {
+  content: "10";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='10']::after {
+  content: "J";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='11']::after {
+  content: "Q";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='0']::before {
+  content: "♦";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='1']::before {
+  content: "♣";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='2']::before {
+  content: "♥";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-suit-idx='3']::before {
+  content: "♠";
+  color: #FFF;
+  font-size: 8.7em;
+  display: block;
+  position: absolute;
+}
+
+.card-front[data-rank-idx='12']::after {
+  content: "K";
+  font-size: 2em;
+  padding-left: 0.2em;
+  display: block;
+  position: absolute;
+}
+
+.card-front.card-front:hover {
+  box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
+  cursor: pointer;
+  top: -10px;
+}
+
+#all {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 200px;
+  width: 200px;
+}
+
+.shuffle {
+  position: absolute;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 152px 213px;
+  height: 212px;
+  width: 150px;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
 }
 
-.card-front.card:hover {
-  box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
-  cursor: pointer;
-  top: -20px;
+#card1 {
+  z-index: 1;
+  animation: a .50s 0.5s infinite;
 }
 
-.card-front::before {
-  bottom: 0;
-  right: .1em;
+#card2 {
+  animation: b .5s 0.5s infinite;
 }
 
-.card-front::after {
-  left: .2em;
+#text {
+  position: absolute;
+  top: 210px;
+  text-align: center;
+  z-index: 5;
+  width: 150px;
+  color: black;
+  animation: c 2s infinite;
 }
 
-.card-front[data-rank-idx='0']::before {
-  content: "A";
+@keyframes a {
+  0% {
+  }
+  30% {
+    transform: translateX(205px) rotate(70deg) rotateY(80deg);
+  }
+  100% {
+    rotate: 0deg;
+  }
 }
 
-.card-front[data-rank-idx='1']::before {
-  content: "2";
+@keyframes b {
+  0% {
+  }
+  100% {
+    z-index: 2;
+  }
 }
 
-.card-front[data-rank-idx='2']::before {
-  content: "3";
-}
-
-.card-front[data-rank-idx='3']::before {
-  content: "4";
-}
-
-.card-front[data-rank-idx='4']::before {
-  content: "5";
-}
-
-.card-front[data-rank-idx='5']::before {
-  content: "6";
-}
-
-.card-front[data-rank-idx='6']::before {
-  content: "7";
-}
-
-.card-front[data-rank-idx='7']::before {
-  content: "8";
-}
-
-.card-front[data-rank-idx='8']::before {
-  content: "9";
-}
-
-.card-front[data-rank-idx='9']::before {
-  content: "10";
-}
-
-.card-front[data-rank-idx='10']::before {
-  content: "J";
-}
-
-.card-front[data-rank-idx='11']::before {
-  content: "Q";
-}
-
-.card-front[data-rank-idx='12']::before {
-  content: "K";
-}
-
-.card-front[data-suit-idx='0']::after {
-  content: "♦";
-}
-
-.card-front[data-suit-idx='1']::after {
-  content: "♣";
-}
-
-.card-front[data-suit-idx='2']::after {
-  content: "♥";
-}
-
-.card-front[data-suit-idx='3']::after {
-  content: "♠";
+@keyframes c {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }

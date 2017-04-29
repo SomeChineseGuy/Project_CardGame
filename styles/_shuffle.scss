@@ -26,11 +26,11 @@
 
 #card1 {
 	z-index: 1;
-	animation: a 2s 0.5s infinite;
+	animation: a .50s 0.5s infinite;
 }
 
 #card2 {
-	animation: b 2s 0.5s infinite;
+	animation: b .5s 0.5s infinite;
 }
 #text{
 	position:absolute;
@@ -38,7 +38,7 @@
 	text-align:center;
 	z-index:5;
 	width:150px;
-	color:white;
+	color:black;
 	animation: c 2s infinite;
 }
 @keyframes a {

@@ -3,49 +3,58 @@ $red: crimson !default;
 $white: #ffffff !default;
 $ranks: 'A' '2' '3' '4' '5' '6' '7' '8' '9' '10' 'J' 'Q' 'K';
 $suits: 
+
+
+
 //Diamonds
-(bg:$white, fg:$white, symbol:'\2666', empty: '\2662', idx: 0),
+(bg:$white, fg:$white, symbol:'♦', empty: '\2662', idx: 0),
 //Clubs
-(bg:$white, fg:$white, symbol:'\2663', empty: '\2667', idx: 1),
+(bg:$white, fg:$white, symbol:'♣', empty: '\2667', idx: 1),
 //Hearts
-(bg:$white, fg:$white, symbol:'\2665', empty: '\2661', idx: 2),
+(bg:$white, fg:$white, symbol:'♥', empty: '\2661', idx: 2),
 //Spades
-(bg:$white, fg:$white, symbol:'\2660', empty: '\2664', idx: 3);
+(bg:$white, fg:$white, symbol:'♠', empty: '\2664', idx: 3);
 
 
 .card-front {
   position: relative;
   float: left;
   margin-right: 10px;
-  width: 150px;
-  height: 220px;
+  width: 5em;
+  height: 7.93em;
   border-radius: 10px;
-  background: #fff;
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
-    &.card:hover {
-    box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
-    cursor: pointer;
-    top: -20px;
+  background-color: red;
+  overflow: hidden;
+  .card-front:before, .card-front:after {
+        display:block;
+    position:absolute;
   }
-  &::before {
-    bottom: 0;
-    right: .1em;
-  }
-  &::after {
-    left:.2em;
-  }
-   @for $i from 1 through 13{
-     $value: nth($ranks, $i);
-    &[data-rank-idx='#{$i - 1}']::before {
+  @for $i from 1 through 13{
+    @each $suit-data in $suits {
+      &[data-suit-idx='#{map-get($suit-data, 'idx')}']::before {
+        content: map-get($suit-data, 'symbol');
+        color:#FFF;
+        font-size: 8.7em;
+        display:block;
+        position:absolute;
+      }
+    }
+    $value: nth($ranks, $i);
+    &[data-rank-idx='#{$i - 1}']::after {
       content: $value;
+      font-size: 2em;
+      padding-left: 0.2em;
+      display:block;
+      position:absolute;
     } 
   }
-  @each $suit-data in $suits {
-    &[data-suit-idx='#{map-get($suit-data, 'idx')}']::after {
-      content: map-get($suit-data, 'symbol')
-    }
+  &.card-front:hover {
+    box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
+    cursor: pointer;
+    top: -10px;
   }
 }
 

@@ -57,29 +57,32 @@ app.get("/", (req, res) => {
 
 // TEST FOR TEMPLATE!!!!!!!!!!!!!!!!!!
 app.get('/json', (req, res) => {
-  const data =  {
-    deck: true,
-    discard: 1,
-    userhand: [7,8,9,10],
+  const user2 = {
+    deck: 30,
+    discard: [1, 0, 1],
+    userhand: [[11, 0, 7], [12, 1, 8], [0, 2, 9], [10, 3, 10]],
     oppHandCount: 5,
-    userDiscard: [48, 47, 46],
-    opponentDiscard: [52, 51, 50]
+    dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
+    availablePlays: {
+      draw: 0,
+      takeTop: 0,
+      takeAll: 0,
+      drop3: 0,
+      drop1: 0,
+      discard: 0
+    }
   };
-  res.json(data);
+  res.json(user2);
 });
 
 app.get('/login/:id', (req, res) => {
- req.session.userid = req.params.id;
- res.redirect('/');
+  req.session.userid = req.params.id;
+  res.redirect('/');
 });
 
-app.get('/game', function(req, res,next) {
 
-   res.render("game1");
-});
-
-app.get('/game2', function(req, res,next) {
-   res.sendFile(__dirname + '/public/game2.html');
+app.get('/game2', function(req, res, next) {
+  res.sendFile(__dirname + '/public/game2.html');
 });
 
 server.listen(PORT, () => {
@@ -87,26 +90,48 @@ server.listen(PORT, () => {
 });
 
 const user1 = {
-  deck: true,
-  discard: 1,
-  userhand: [2,3,4,5,6],
+  deck: 30,
+  discard: [1, 0, 1],
+  userhand: [[1, 1, 2], [1, 2, 3], [1, 3, 4], [2, 0, 5], [2, 1, 6]],
   oppHandCount: 4,
-  userDiscard: [52,51,50],
-  opponentDiscard: [48,47,46]
-}
+  dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
+  availablePlays: {
+    draw: 0,
+    takeTop: 0,
+    takeAll: 0,
+    drop3: 1,
+    drop1: 1,
+    discard: 1
+  }
+};
 
 const user2 = {
-  deck: true,
-  discard: 1,
-  userhand: [7,8,9,10],
+  deck: 30,
+  discard: [1, 0, 1],
+  userhand: [[2, 2, 7], [2, 3, 8], [3, 0, 9], [3, 2, 10]],
   oppHandCount: 5,
-  userDiscard: [48, 47, 46],
-  opponentDiscard: [52, 51, 50]
-}
+  dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
+  availablePlays: {
+    draw: 0,
+    takeTop: 0,
+    takeAll: 0,
+    drop3: 0,
+    drop1: 0,
+    discard: 0
+  }
+};
+
+app.get('/game', function(req, res, next) {
+  res.render("game", user2);
+});
+
+app.get('/about', function(req, res, next) {
+  res.render("about");
+});
 
 const authUsers = {
 
-}
+};
 
 
 let connectedPlayers = {
@@ -127,7 +152,7 @@ let connectedPlayers = {
 // });
 
 io.use(function(socket, next) {
-    sessionMiddleware(socket.request, socket.request.res, next);
+  sessionMiddleware(socket.request, socket.request.res, next);
 });
 
 const game1 = io.of('/game1');
@@ -165,5 +190,5 @@ game2.on('connection', function(socket) {
   socket.on('add user', function(username){
     console.log(`Welcome to game 2 ${username}`);
     socket.emit('game object', JSON.stringify(testObj2));
-  })
-})
+  });
+});

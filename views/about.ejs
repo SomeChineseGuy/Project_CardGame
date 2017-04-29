@@ -10,13 +10,23 @@
   </head>
   <body>
     <section id='hand-container'>
+
     </section>
     <script id="hand-template" type="text/x-handlebars-template">
       <section class='userHand'>
-        {{#each userhand}}
-          <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
-        {{/each}}
+              {{#each userhand}}
+                  <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
+              {{/each}}
       </section>
     </script>
+    <section class="card-back" class="shuffling-cards">
+      <div id="all">
+        <div id="card1" class="shuffle"></div>
+        <div id="card2" class="shuffle"></div>
+        <div id="text" class="text">
+          <p>Card shuffling</p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

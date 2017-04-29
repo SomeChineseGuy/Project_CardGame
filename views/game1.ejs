@@ -4,14 +4,29 @@
   <meta encoding="utf8">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-<script>
- var socket = io('/game1');
-  console.log(document.cookie);
-  socket.emit('add user', "");
-  socket.on('game object', (data) =>{
-    console.log(data);
+
+  <script>
+  $(document).ready(function(){
+  socket = io('/game1');
+  socket.on('connect', () =>{
+    socket.emit('add user', '/game1#'+socket.id);
   });
+  socket.on('game object', (data) => console.log(data));
+  socket.on('start state', (startState) => {
+      // socket.emit('draw', 'move', '/game1#'+socket.id);
+      console.log(startState);
+  });
+    // });
+  $('.draw').on('click', function (e) {
+    console.log('click');
+    e.preventDefault();
+    socket.emit('draw', '/game1#'+socket.id);
+
+  });
+});
+
 </script>
+
 
 
 </head>
@@ -20,4 +35,7 @@
   <header>
   alskdjflkasjdlkfajs
   </header>
+  <button class="draw">Draw Card</button>
+
+
 </body>

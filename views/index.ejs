@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>ACEs</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -16,10 +16,15 @@
     <% if(username){ %>
       <h1>Hello <%= username %>!</h1>
     <% } %>
-    <a href="/login/abc">USER 1</a>
-    <a href="/login/xyz">USER 2</a>
+    <a href="/login/1">USER 1</a>
+    <a href="/login/2">USER 2</a>
+    <a href="/logout">logout</a>
     <section id='hand-container'>
-        <a href="/game"><button>GIN RUMMYYYYY</button></a>
+      <div id='container' style='height: 800px'>
+        <% for (let game in games) {  %>
+           <a href="/game"><button><%= games[game].name %></button></a>
+        <% } %>
+      </div>
     </section>
   </body>
 </html>

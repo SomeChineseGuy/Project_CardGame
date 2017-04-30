@@ -151,6 +151,10 @@ function filterGameStateForUser(gameState, user_id){
 
 function checkWinnerCondition(gameState, user_id){
   const user_index = gameState.host === user_id ? 0 : 1;
+  const opponent_index = gameState.host === user_id ? 1 : 0;
+  if(gameState.deck.length === 0 && gameState.discard.length === 0){
+    return gameState.hands[user_index].length < gameState.hands[opponent_index].length;
+  }
   if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
     return true;
   } else {

@@ -60,7 +60,7 @@ app.get('/json', (req, res) => {
   const user2 = {
     deck: 30,
     discard: [1, 0, 1],
-    userhand: [[0, 0, 7], [1, 0, 8], [2, 0, 9], [3, 0, 10], [4, 0, 8], [5, 0, 9]],
+    userhand: [[0, 0, 7]],
     oppHandCount: 5,
     dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
     availablePlays: {

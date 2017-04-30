@@ -1,11 +1,12 @@
-.hide {
-	position: absolute;
-	left: 45%;
-	bottom: 50%;
-	margin: auto;	
-}
-
 .deck {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
   background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
   background-size:6em 7.25em;
 	background-position: center;

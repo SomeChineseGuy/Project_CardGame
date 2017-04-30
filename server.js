@@ -192,6 +192,7 @@ game.on('connection', function(socket) {
       players.guest.socket = socket;
       players.guest.id = socket.request.session.userid;
       console.log('GUEST JOINS ===============', players);
+      insertMatchInfo();
       game.emit('game ready');
       const deck = deckConstructor.getDeck();
       console.log(deck);

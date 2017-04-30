@@ -74,7 +74,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='0']::after {
+.card-front[data-rank-idx='1']::after {
   content: "A";
   font-size: 2em;
   padding-left: 0.2em;
@@ -118,7 +118,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='1']::after {
+.card-front[data-rank-idx='2']::after {
   content: "2";
   font-size: 2em;
   padding-left: 0.2em;
@@ -162,7 +162,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='2']::after {
+.card-front[data-rank-idx='3']::after {
   content: "3";
   font-size: 2em;
   padding-left: 0.2em;
@@ -206,7 +206,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='3']::after {
+.card-front[data-rank-idx='4']::after {
   content: "4";
   font-size: 2em;
   padding-left: 0.2em;
@@ -250,7 +250,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='4']::after {
+.card-front[data-rank-idx='5']::after {
   content: "5";
   font-size: 2em;
   padding-left: 0.2em;
@@ -294,7 +294,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='5']::after {
+.card-front[data-rank-idx='6']::after {
   content: "6";
   font-size: 2em;
   padding-left: 0.2em;
@@ -338,7 +338,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='6']::after {
+.card-front[data-rank-idx='7']::after {
   content: "7";
   font-size: 2em;
   padding-left: 0.2em;
@@ -382,7 +382,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='7']::after {
+.card-front[data-rank-idx='8']::after {
   content: "8";
   font-size: 2em;
   padding-left: 0.2em;
@@ -426,7 +426,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='8']::after {
+.card-front[data-rank-idx='9']::after {
   content: "9";
   font-size: 2em;
   padding-left: 0.2em;
@@ -470,7 +470,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='9']::after {
+.card-front[data-rank-idx='10']::after {
   content: "10";
   font-size: 2em;
   padding-left: 0.2em;
@@ -514,7 +514,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='10']::after {
+.card-front[data-rank-idx='11']::after {
   content: "J";
   font-size: 2em;
   padding-left: 0.2em;
@@ -558,7 +558,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='11']::after {
+.card-front[data-rank-idx='12']::after {
   content: "Q";
   font-size: 2em;
   padding-left: 0.2em;
@@ -602,7 +602,7 @@ body #hand-container {
   position: absolute;
 }
 
-.card-front[data-rank-idx='12']::after {
+.card-front[data-rank-idx='13']::after {
   content: "K";
   font-size: 2em;
   padding-left: 0.2em;
@@ -855,6 +855,25 @@ body #hand-container {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.hide {
+  position: absolute;
+  left: 45%;
+  bottom: 50%;
+  margin: auto;
+}
+
+.deck {
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
 }
 
 .inner {

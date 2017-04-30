@@ -1,4 +1,13 @@
 @charset "UTF-8";
+body {
+  position: absolute;
+  background: #00a651;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .card-front {
   position: relative;
   float: left;
@@ -9,7 +18,6 @@
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
-  background-color: red;
   overflow: hidden;
 }
 
@@ -20,32 +28,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -60,32 +72,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -100,32 +116,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -140,32 +160,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -180,32 +204,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -220,32 +248,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -260,32 +292,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -300,32 +336,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -340,32 +380,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -380,32 +424,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -420,32 +468,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -460,32 +512,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -500,32 +556,36 @@
 
 .card-front[data-suit-idx='0']::before {
   content: "♦";
+  background-color: #FF0654;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='1']::before {
   content: "♣";
+  background-color: #808080;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='2']::before {
   content: "♥";
+  background-color: #ff0000;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
 
 .card-front[data-suit-idx='3']::before {
   content: "♠";
+  background-color: #666;
   color: #FFF;
-  font-size: 8.7em;
+  font-size: 8.6em;
   display: block;
   position: absolute;
 }
@@ -544,6 +604,10 @@
   top: -10px;
 }
 
+.userHand .card-front + .card-front {
+  margin-left: -3em;
+}
+
 #all {
   position: absolute;
   margin: auto;
@@ -558,10 +622,11 @@
 .shuffle {
   position: absolute;
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
-  background-size: 152px 213px;
-  height: 212px;
-  width: 150px;
-  border-radius: 5px;
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 10px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
@@ -615,4 +680,209 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+.hold {
+  position: absolute;
+  display: block;
+  width: 450px;
+  height: 450px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inside {
+  margin: 0;
+  position: absolute;
+}
+
+.cards {
+  position: absolute;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  animation: idk2 1.2s ease infinite;
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+  background-color: red;
+}
+
+.what .cards {
+  animation: idk2 1.2s ease infinite;
+  animation-direction: reverse;
+}
+
+.cards:nth-child(2) {
+  left: 80px;
+  animation-delay: .25s;
+}
+
+.cards:nth-child(3) {
+  left: 80px;
+  top: 80px;
+  animation-delay: .5s;
+}
+
+.cards:nth-child(4) {
+  top: 80px;
+  animation-delay: .75s;
+}
+
+.cards:nth-child(5) {
+  top: 80px;
+  animation-delay: 1s;
+}
+
+.cards:nth-child(6) {
+  top: 80px;
+  animation-delay: 1.25s;
+}
+
+.cards:nth-child(7) {
+  top: 80px;
+  animation-delay: 1.5s;
+}
+
+.cards:nth-child(8) {
+  left: 80px;
+  top: 80px;
+  animation-delay: .25s;
+}
+
+.cards:nth-child(9) {
+  left: 80px;
+  animation-delay: .5s;
+}
+
+.cards:nth-child(10) {
+  left: 80px;
+  top: 80px;
+  animation-delay: .75s;
+}
+
+.cards:nth-child(11) {
+  top: 80px;
+  animation-delay: 1s;
+}
+
+.cards:nth-child(12) {
+  left: 80px;
+  top: 80px;
+  animation-delay: 1.25s;
+}
+
+.cards:nth-child(13) {
+  bottom: 80px;
+  top: 80px;
+  animation-delay: 1.5s;
+}
+
+.cards:nth-child(14) {
+  left: 80px;
+  top: 80px;
+  animation-delay: 1.75s;
+}
+
+.cards:nth-child(15) {
+  top: 80px;
+  bottom: 80px;
+  animation-delay: 2s;
+}
+
+@keyframes idk {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(50px) rotate(90deg);
+  }
+  50% {
+    transform: translateX(50px) translateY(50px) rotate(0);
+  }
+  75% {
+    transform: translateX(0) translateY(50px) rotate(90deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes idk2 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(150px) rotate(90deg);
+  }
+  50% {
+    transform: translateX(150px) translateY(150px) rotate(0);
+  }
+  75% {
+    transform: translateX(0) translateY(150px) rotate(90deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#hand-container .card-front + .card-front {
+  margin-left: -3em;
+}
+
+.hand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.bg-pattern {
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+#opponent-hand {
+  position: absolute;
+}
+
+#opponent-hand .opponent-cards + .opponent-cards {
+  margin-left: -3em;
+}
+
+.opponent-cards {
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
 }

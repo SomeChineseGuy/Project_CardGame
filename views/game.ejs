@@ -9,14 +9,25 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
-    <section id='hand-container'>
+    <section id="opponent-position">
+      <div class="opponent-hand">
+        <div class="opponent-cards"></div>
+        <div class="opponent-cards"></div>
+        <div class="opponent-cards"></div>
+        <div class="opponent-cards"></div>
+        <div class="opponent-cards"></div>
+        <div class="opponent-cards"></div>
+      </div>
     </section>
+      </div>
+    </section>
+    <section class="hand" id='hand-container'>
     <script id="hand-template" type="text/x-handlebars-template">
-      <section class='userHand'>
-        {{#each userhand}}
-          <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
+     {{#each userhand}}
+        <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
         {{/each}}
-      </section>
+     </section>
     </script>
+    <!--<section class="hide deck"></section>-->
   </body>
 </html>

@@ -60,7 +60,7 @@ app.get('/json', (req, res) => {
   const user2 = {
     deck: 30,
     discard: [1, 0, 1],
-    userhand: [[11, 0, 7], [12, 1, 8], [0, 2, 9], [10, 3, 10]],
+    userhand: [[0, 0, 7], [1, 0, 8], [2, 0, 9], [3, 0, 10], [4, 0, 8], [5, 0, 9]],
     oppHandCount: 5,
     dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
     availablePlays: {
@@ -92,7 +92,7 @@ server.listen(PORT, () => {
 const user1 = {
   deck: 30,
   discard: [1, 0, 1],
-  userhand: [[1, 1, 2], [1, 2, 3], [1, 3, 4], [2, 0, 5], [2, 1, 6]],
+  userhand: [[0, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 11], [4, 3, 8]],
   oppHandCount: 4,
   dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
   availablePlays: {
@@ -108,7 +108,10 @@ const user1 = {
 const user2 = {
   deck: 30,
   discard: [1, 0, 1],
-  userhand: [[2, 2, 7], [2, 3, 8], [3, 0, 9], [3, 2, 10]],
+  userhand: [[0, 0, 7], [1, 0, 8], [2, 0, 9], [3, 0, 10], [4, 0, 8], [5, 0, 9], [6, 0, 10], [7, 0, 8], [8, 0, 9], [9, 0, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
+               [0, 1, 7], [1, 1, 8], [2, 1, 9], [3, 1, 11], [4, 1, 8], [5, 1, 9], [6, 1, 11], [7, 1, 8], [8, 1, 9], [9, 1, 11], [10, 1, 8], [11, 1, 9], [12, 1, 10],
+               [0, 2, 7], [1, 2, 8], [2, 2, 9], [3, 2, 12], [4, 2, 8], [5, 2, 9], [6, 2, 12], [7, 2, 8], [8, 2, 9], [9, 2, 12], [10, 2, 8], [11, 2, 9], [12, 2, 10],
+               [0, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 11], [4, 3, 8], [5, 3, 9], [6, 3, 11], [7, 3, 8], [8, 3, 9], [9, 3, 11], [10, 3, 8], [11, 3, 9], [12, 3, 10]],
   oppHandCount: 5,
   dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
   availablePlays: {
@@ -127,6 +130,14 @@ app.get('/game', function(req, res, next) {
 
 app.get('/about', function(req, res, next) {
   res.render("about");
+});
+
+app.get('/about/shuffle1', function(req, res, next) {
+  res.render("shuffle1");
+});
+
+app.get('/about/shuffle2', function(req, res, next) {
+  res.render("shuffle2");
 });
 
 const authUsers = {

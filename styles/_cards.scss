@@ -1,20 +1,17 @@
-$black: #666 !default;
-$red: crimson !default;
-$white: #ffffff !default;
+$spades: #666;
+$clubs:#808080;
+$hearts:#ff0000;
+$diamonds:#FF0654;
 $ranks: 'A' '2' '3' '4' '5' '6' '7' '8' '9' '10' 'J' 'Q' 'K';
 $suits: 
-
-
-
 //Diamonds
-(bg:$white, fg:$white, symbol:'♦', empty: '\2662', idx: 0),
+(bg:$diamonds, symbol:'♦', idx: 0),
 //Clubs
-(bg:$white, fg:$white, symbol:'♣', empty: '\2667', idx: 1),
+(bg:$clubs, symbol:'♣', idx: 1),
 //Hearts
-(bg:$white, fg:$white, symbol:'♥', empty: '\2661', idx: 2),
+(bg:$hearts, symbol:'♥', idx: 2),
 //Spades
-(bg:$white, fg:$white, symbol:'♠', empty: '\2664', idx: 3);
-
+(bg:$spades, symbol:'♠', idx: 3);
 
 .card-front {
   position: relative;
@@ -26,7 +23,6 @@ $suits:
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
-  background-color: red;
   overflow: hidden;
   .card-front:before, .card-front:after {
         display:block;
@@ -34,10 +30,11 @@ $suits:
   }
   @for $i from 1 through 13{
     @each $suit-data in $suits {
-      &[data-suit-idx='#{map-get($suit-data, 'idx')}']::before {
+       &[data-suit-idx='#{map-get($suit-data, 'idx')}']::before {
         content: map-get($suit-data, 'symbol');
+        background-color: map-get($suit-data, 'bg');
         color:#FFF;
-        font-size: 8.7em;
+        font-size: 8.6em;
         display:block;
         position:absolute;
       }
@@ -58,72 +55,10 @@ $suits:
   }
 }
 
-
-
-    
-
-// .card-front[data-rank-idx="0"]::before {
-//   content: '1'
-// }
-
-// .card-front[data-suit-idx="0"]::after {
-//   content: 'heart'
-// }
-
-
-
-// .card p {
-//   text-align: center;
-//   font: 100px/220px Georgia, Times New Roman, serif;
-// }
-
-
-// .suitdiamonds:before, .suitdiamonds:after {
-//   content: "♦";
-//   color: #ff0000;
-// }
- 
-// .suithearts:before, .suithearts:after {
-//   content: "♥";
-//   color: #ff0000;
-// }
- 
-// .suitclubs:before, .suitclubs:after {
-//   content: "♣";
-//   color: #000;
-// }
- 
-// .suitspades:before, .suitspades:after {
-//   content: "♠";
-//   color: #000;
-// }
-
-// div[class*='suit']:before {
-//   position: absolute;
-//   font-size: 35px;
-//   left: 5px;
-//   top: 5px;
-// }
- 
-// div[class*='suit']:after {
-//   position: absolute;
-//   font-size: 35px;
-//   right: 5px;
-//   bottom: 5px;
-// }
-
-// .hand {
-//   margin: 50px;
-// }
-
-// //This is for display only, it can be moved
-
-// .hand:before,
-// .hand:after {
-//     content:"";
-//     display:table;
-// }
- 
-// .hand:after {
-//     clear:both;
-// }
+.userHand {
+  .card-front{
+    +.card-front {
+      margin-left: -3em;
+    }
+  }
+}

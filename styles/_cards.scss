@@ -40,7 +40,7 @@ $suits:
       }
     }
     $value: nth($ranks, $i);
-    &[data-rank-idx='#{$i - 1}']::after {
+    &[data-rank-idx='#{$i}']::after {
       content: $value;
       font-size: 2em;
       padding-left: 0.2em;

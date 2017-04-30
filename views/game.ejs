@@ -3,7 +3,7 @@
   <head>
     <title>Game</title>
     <meta charset="utf-8">
-    <link rel=“stylesheet” href=“/styles/main.css” type=“text/css” />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js'></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
@@ -28,10 +28,9 @@
         <div class="opponent-cards"></div>
         {{/times}}
         </div>
-        <p>{{opponent_hand}}</p>
       </section>
       {{#each hand}}
-        <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"> test</span>
+        <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"></span>
         {{/each}}
       </section>
     </script>

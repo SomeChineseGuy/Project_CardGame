@@ -1,6 +1,23 @@
 @charset "UTF-8";
 body {
-  background-color: green;
+  background-color: red;
+}
+
+body h1 {
+  color: #244751;
+}
+
+body li {
+  display: inline;
+}
+
+body .public {
+  vertical-align: middle;
+}
+
+body #hand-container {
+  height: 100%;
+  background: url(../images/casino.jpg) no-repeat;
 }
 
 .card-front {

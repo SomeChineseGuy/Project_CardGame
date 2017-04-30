@@ -54,11 +54,3 @@ $suits:
     top: -10px;
   }
 }
-
-.userHand {
-  .card-front{
-    +.card-front {
-      margin-left: -3em;
-    }
-  }
-}

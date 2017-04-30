@@ -616,10 +616,6 @@ body #hand-container {
   top: -10px;
 }
 
-.userHand .card-front + .card-front {
-  margin-left: -3em;
-}
-
 #all {
   position: absolute;
   margin: auto;
@@ -857,6 +853,7 @@ body #hand-container {
   align-items: flex-end;
 }
 
+<<<<<<< HEAD
 .hide {
   position: absolute;
   left: 45%;
@@ -883,7 +880,21 @@ body #hand-container {
   margin: 0 auto;
 }
 
-.bg-pattern {
+#opponent-position {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+#opponent-position .opponent-cards + .opponent-cards {
+  margin-left: -3em;
+}
+
+.opponent-cards {
+  margin-right: 10px;
+  position: relative;
+  float: left;
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;
@@ -895,18 +906,34 @@ body #hand-container {
   box-shadow: 0px 0px 5px 1px black;
 }
 
-#opponent-hand {
+.deck {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
 }
 
-#opponent-hand .opponent-cards + .opponent-cards {
-  margin-left: -3em;
-}
-
-.opponent-cards {
-  position: relative;
-  float: left;
+.inner {
+  position: absolute;
+  left: 0;
+  right: 0;
   margin: 0 auto;
+}
+
+.bg-pattern {
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;

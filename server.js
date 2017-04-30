@@ -16,8 +16,8 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const cookieSession = require('cookie-session');
 const io          = require('socket.io')(server);
-const deckConstructor = require ('../deck.js');
-const rummy = require('../rummy.js');
+const deckConstructor = require ('./games/deck.js');
+const rummy = require('./games/rummy.js');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 

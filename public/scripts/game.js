@@ -3,18 +3,22 @@
 
   // READ
 
-
-    const templateText = $('#hand-container').text()
+    const shuffleText = $('#shuffleAnim').text()
+    const shuffTemp = Handlebars.compile(shuffleText);
+    function renderShuffle(){
+      $('#shuffleAnimation').empty()
+                           .append(shuffTemp());
+    }
+    const templateText = $('#handTemp').text()
     const pageTemplate = Handlebars.compile(templateText);
-    console.log(pageTemplate);
     function renderPage (stateData) {
       $('#hand-container').empty()
                           .append(pageTemplate(stateData));
     }
 
   function endTurn() { $('.play').prop('disabled', true)}
-  function endStart() { $('.play .start').prop('disabled', true)}
-  function startTurn() {$('.play .start').prop('disabled', false)}
+  function endStart() { $('.play.start').prop('disabled', true)}
+  function startTurn() {$('.play.start').prop('disabled', false)}
 
 
   Handlebars.registerHelper('times', function(n, block) {
@@ -28,50 +32,63 @@
 
   socket.on('connect', () => {
     socket.emit('add user', '/game#' + socket.id);
+    renderShuffle();
   });
   socket.on('game ready', () => {
     $('body').append("<p class='getready'>Game starting</p>");
-    setTimeout(() => {$('.getready').empty();}, 5000);
+    setTimeout(() => {$('#shuffleAnimation').empty();}, 5000);
+
   });
     // });
   socket.on('start game', (stateData) => {
     renderPage(stateData);
     console.log(stateData);
   });
-
-  socket.on('waitTurn', () => endTurn());
-  socket.on('turnStart', () => startTurn());
-  socket.on('new state', (newState) => console.log(newState));
+  socket.on('firstTurn', () => endStart());
+  socket.on('waitTurn', () => {
+    endTurn();
+    $('body').append("<p class='waiting'>Waiting for Opponent</p>");
+    });
+  socket.on('turnStart', () => {
+    startTurn();
+    $('.waiting').empty();
+  });
+  socket.on('new state', (newState, moves) => console.log(newState, moves));
   socket.on('winner', () => {
     alert('you win!');
     setTimeout(()=> window.location = '/', 2000);
   });
 
 
-  $('.draw').on('click', (e) => {
+  $(document).on('click','.draw', (e) => {
     console.log('click');
     e.preventDefault();
-    // endStart();
+    endStart();
     socket.emit('draw', '/game#' + socket.id);
   });
 
-  $('.takeTop').on('click', (e) => {
+  $(document).on('click', '.takeTop', (e) => {
     e.preventDefault();
     endStart();
-    socket.emit('takeTop', '/game#'+socket.id);
+    socket.emit('takeTop', '/game#' + socket.id);
   });
-  $('.takeAll').on('click', (e) => {
+  $(document).on('click', '.takeAll', (e) => {
     e.preventDefault();
     endStart();
-    socket.emit('takeAll', '/game#'+socket.id);
+    socket.emit('takeAll', '/game#' + socket.id);
   });
-  $('.discard').on('click', (e) => {
+
+  $(document).on('click','.discard', (e) => {
     e.preventDefault();
-    $()
-    socket.emit('takeAll', '/game#'+socket.id);
+    socket.emit('discard', '/game#' + socket.id);
   });
-  $('.dropSet').on('click', () => {
+
+  $(document).on('click', 'dropSet', () => {
     e.preventDefault();
-    socket.emit('takeAll', '/game#'+socket.id);
+    socket.emit('dropSet', '/game#' + socket.id);
+  });
+  $(document).on('click', 'attachOne', (e) => {
+    e.preventDefault();
+    socket.emit('attachOne', '/game#' + socket.id)
   });
 });

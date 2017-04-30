@@ -10,45 +10,16 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1>Hello World!</h1>
-    <a href="/game">GIN RUMMMYYYYY</a>
+    <% if(username){ %>
+      <h1>Hello <%= username %>!</h1>
+    <% } %>
     <a href="/login/abc">USER 1</a>
     <a href="/login/xyz">USER 2</a>
-    <section id="hand-container">
-
+    <section id='hand-container'>
+        <a href="/game"><button>GIN RUMMYYYYY</button></a>
     </section>
-    <script id="hand-template" type="text/x-handlebars-template">
-      <section class='opp_hand'>{{oppHandCount}}</section>
-      <section class='opponent_discard'>{{opponentDiscard}}</section>
-      <section class='public'>
-        <ul class='deck'>
-          {{#if deck}}
-            <li>
-              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/bicycle-card.jpg'/>
-            </li>
-          {{/if}}
-          {{#if discard}}
-            <li>
-              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/j-od.jpg'/>
-            </li>
-          {{/if}}
-        </ul>
-      </section>
-      <section class='user_discard'>{{userDiscard}}</section>
-      <section class='userHand'>
-        <ul class="user_hand">
-          {{#each userhand}}
-            <li>
-              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/82473/j-od.jpg'/>{{this}}
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    </script>
   </body>
 </html>

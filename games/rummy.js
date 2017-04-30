@@ -28,7 +28,10 @@ function getMoves(gameState, user_id, first_move){
   if(first_move){
     return init_moves;
   } else {
-    const has_3_of_a_king = check3OfAKind(gameState, user_id);
+    const user_index = gameState.host === user_id ? 0 : 1;
+    const user_hand = gameState.hands[user_index];
+    const has_3_in_hand = check3OfAKind(user_hand);
+    const has_1_for_drop_pile = isCardValidForDropPile(user_hand, gameState.drop_pile);
     const moves = {
       draw: false,
       take_top: false,
@@ -37,8 +40,10 @@ function getMoves(gameState, user_id, first_move){
       attach_one: false,
       discard: true
     }
-    if(has_3_of_a_king){
+    if(has_3_in_hand){
       moves.drop_set = true;
+    }
+    if(has_1_for_drop_pile){
       moves.attach_one = true;
     }
     return moves;
@@ -133,24 +138,33 @@ function filterGameStateForUser(gameState, user_id){
     deck: gameState.deck.length,
     discard: [],
     hand: [],
-    opponent_hand: 0,
-    drop_pile: gameState.drop_pile
+    opponent_hand: 0
   }
   if(gameState.discard.length !== 0){
     filteredGS.discard = gameState.discard[gameState.discard.length - 1];
   }
   if(user_id === gameState.host){
-    filteredGS.hand = gameState.hands[0];
+    filteredGS.hand = gameState.hands[0].sort((a, b) => a[2] > b[2]);
     filteredGS.opponent_hand = gameState.hands[1].length;
   } else {
-    filteredGS.hand = gameState.hands[1];
+    filteredGS.hand = gameState.hands[1].sort((a, b) => a[2] > b[2]);
     filteredGS.opponent_hand = gameState.hands[0].length;
   }
+  const grouped_drop_pile = groupDropPile(gameState.drop_pile);
+  const grouped = [];
+  for(let group in grouped_drop_pile){
+    grouped.push(grouped_drop_pile[group]);
+  }
+  filteredGS.drop_pile = grouped;
   return filteredGS;
 }
 
 function checkWinnerCondition(gameState, user_id){
   const user_index = gameState.host === user_id ? 0 : 1;
+  const opponent_index = gameState.host === user_id ? 1 : 0;
+  if(gameState.deck.length === 0 && gameState.discard.length === 0){
+    return gameState.hands[user_index].length < gameState.hands[opponent_index].length;
+  }
   if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
     return true;
   } else {
@@ -163,9 +177,20 @@ function isSetValid(set, rank){
   return rankGroups[rank] >= 3;
 }
 
-function check3OfAKind(gameState, user_id) {
-  const user_index = gameState.host === user_id ? 0 : 1;
-  const user_hand = gameState.hands[user_index];
+function isCardValidForDropPile(user_hand, drop_pile){
+  let valid = false;
+  user_hand.forEach((hand_card) => {
+    const found = drop_pile.find((drop_card) => {
+      return hand_card[0] === drop_card[0];
+    });
+    if(found){
+      valid = true;
+    }
+  });
+  return valid;
+}
+
+function check3OfAKind(user_hand) {
   const rankGroups =  groupRanks(user_hand);
   for(let rank in rankGroups){
     if(rankGroups[rank] >= 3){
@@ -183,6 +208,17 @@ function groupRanks(hand) {
   },{})
 }
 
+function groupDropPile(drop_pile){
+  return drop_pile.reduce(function(counter, item) {
+      var p = item[0];
+      if(!counter.hasOwnProperty(p)){
+        counter[p] = [];
+      }
+      counter[p].push(item);
+      return counter;
+  },{})
+}
+
 
 module.exports.startGame = startGame;
 module.exports.getMoves = getMoves;
@@ -195,4 +231,5 @@ module.exports.discardCard = discardCard;
 module.exports.filterGameStateForUser = filterGameStateForUser;
 module.exports.checkWinnerCondition = checkWinnerCondition;
 module.exports.isSetValid = isSetValid;
+module.exports.isCardValidForDropPile = isCardValidForDropPile;
 module.exports.check3OfAKind = check3OfAKind;

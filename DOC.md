@@ -381,11 +381,11 @@ should show the deck length to the player.
 expect(rummy.filterGameStateForUser(gameState, host_id).deck).to.be.a('number');
 ```
 
-should show the drop pile to the player.
+should show the grouped drop pile to the player.
 
 ```js
-gameState.drop_pile = [[1,1,1], [2,3,4]];
-expect(rummy.filterGameStateForUser(gameState, host_id).drop_pile).to.deep.equal([[1,1,1], [2,3,4]]);
+gameState.drop_pile = [[1,1,1], [2,3,4], [1,2,6], [1,3,4], [2,2,6], [2,1,4]];
+expect(rummy.filterGameStateForUser(gameState, host_id).drop_pile).to.deep.equal([[[1,1,1], [1,2,6], [1,3,4]], [[2,3,4], [2,2,6], [2,1,4]]]);
 ```
 
 <a name="rummy-check-functions"></a>
@@ -414,21 +414,21 @@ should return true if the hand has 3 cards with the same rank.
 
 ```js
 gameState.hands = [[[1,2,2],[1,1,4], [1,3,9]], []];
-expect(rummy.check3OfAKind(gameState, host_id)).to.be.true;
+expect(rummy.check3OfAKind(gameState.hands[0])).to.be.true;
 ```
 
 should return true if the hand has 4 cards with the same rank.
 
 ```js
 gameState.hands = [[[1,2,2],[1,1,4], [1,3,9], [1,4,6]], []];
-expect(rummy.check3OfAKind(gameState, host_id)).to.be.true;
+expect(rummy.check3OfAKind(gameState.hands[0])).to.be.true;
 ```
 
 should return false if the hand has no rank with 3 cards.
 
 ```js
 gameState.hands = [[[1,2,2],[1,1,4], [2,3,9], [2,4,6]], []];
-expect(rummy.check3OfAKind(gameState, host_id)).to.be.false;
+expect(rummy.check3OfAKind(gameState.hands[0])).to.be.false;
 ```
 
 <a name="rummy-check-functions-checkwinnerconditiongamestate-user_id"></a>
@@ -451,6 +451,24 @@ should return false if the user has more than one card left in his/her hand.
 
 ```js
 gameState.hands = [[[3,4,5], [6,7,8]], []];
+expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.false;
+```
+
+should return true if the deck is empty and the user has less cards left than the opponent.
+
+```js
+gameState.deck = [];
+gameState.discard = [];
+gameState.hands = [[[3,4,5], [2,3,4]], [[3,4,5], [6,7,8], [4,5,6]]];
+expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.true;
+```
+
+should return false if the deck is empty and the user has more cards left than the opponent.
+
+```js
+gameState.deck = [];
+gameState.discard = [];
+gameState.hands = [[[3,4,5], [6,7,8], [1,1,1]], [[3,4,5], [6,7,8]]];
 expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.false;
 ```
 

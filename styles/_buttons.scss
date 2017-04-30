@@ -1,0 +1,65 @@
+.mid-turn {
+  position: absolute;
+  right: 0;
+  margin-right: 4em;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-turn {
+  position: absolute;
+  right: 0;
+  margin-right: 13em;
+  display: flex;
+  flex-direction: column;
+}
+
+.play {
+  margin-bottom: .6em;
+}
+
+
+.cool {
+  position: relative;
+  top: 20%;
+  left: 30%;
+  display: block;
+  width: 5em;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  background: #5a99d4;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+  animation: pulse 1.5s infinite;
+}
+.cool:hover {
+  animation: none;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  70% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+  100% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+}

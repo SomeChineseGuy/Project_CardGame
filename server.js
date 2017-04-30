@@ -2,7 +2,6 @@
 
 require('dotenv').config();
 
-
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.NODE_ENV || "development";
 const express     = require("express");
@@ -61,7 +60,8 @@ app.get('/json', (req, res) => {
   const user2 = {
     deck: 30,
     discard: [1, 0, 1],
-    userhand: [[0, 0, 7]],
+    userhand: [[1, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 10], [4, 3, 8], [5, 3, 9], [6, 3, 10], [7, 3, 8], [8, 3, 9], [9, 3, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
+               [0, 1, 7], [1, 1, 8], [2, 1, 9], [3, 1, 11], [4, 1, 8], [5, 1, 9], [6, 1, 11], [7, 1, 8], [8, 1, 9], [9, 1, 11], [10, 1, 8], [11, 1, 9]],
     oppHandCount: 5,
     dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
     availablePlays: {
@@ -136,6 +136,23 @@ app.get('/game', function(req, res) {
   }
   res.render("game", user2);
 });
+
+
+// TEST CSS ONLY
+
+
+app.get('/test', function(req, res) {
+  if(players.host.id && players.guest.id){
+    res.redirect('/');
+    return;
+  }
+  res.render("Css-test", user2);
+});
+
+
+
+
+
 
 app.get('/about', function(req, res, next) {
   res.render("about");

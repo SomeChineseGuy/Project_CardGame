@@ -1,13 +1,80 @@
 @charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Wellfleet';
 body {
   background-color: green;
+}
+
+.mid-turn {
+  position: absolute;
+  right: 0;
+  margin-right: 4em;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-turn {
+  position: absolute;
+  right: 0;
+  margin-right: 13em;
+  display: flex;
+  flex-direction: column;
+}
+
+.play {
+  margin-bottom: .6em;
+}
+
+.cool {
+  position: relative;
+  top: 20%;
+  left: 30%;
+  display: block;
+  width: 5em;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  background: #5a99d4;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+.cool:hover {
+  animation: none;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  70% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+  100% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
 }
 
 .card-front {
   position: relative;
   float: left;
   margin-right: 10px;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
@@ -59,7 +126,9 @@ body {
 
 .card-front[data-rank-idx='1']::after {
   content: "A";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -103,7 +172,9 @@ body {
 
 .card-front[data-rank-idx='2']::after {
   content: "2";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -147,7 +218,9 @@ body {
 
 .card-front[data-rank-idx='3']::after {
   content: "3";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -191,7 +264,9 @@ body {
 
 .card-front[data-rank-idx='4']::after {
   content: "4";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -235,7 +310,9 @@ body {
 
 .card-front[data-rank-idx='5']::after {
   content: "5";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -279,7 +356,9 @@ body {
 
 .card-front[data-rank-idx='6']::after {
   content: "6";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -323,7 +402,9 @@ body {
 
 .card-front[data-rank-idx='7']::after {
   content: "7";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -367,7 +448,9 @@ body {
 
 .card-front[data-rank-idx='8']::after {
   content: "8";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -411,7 +494,9 @@ body {
 
 .card-front[data-rank-idx='9']::after {
   content: "9";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -455,7 +540,9 @@ body {
 
 .card-front[data-rank-idx='10']::after {
   content: "10";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -499,7 +586,9 @@ body {
 
 .card-front[data-rank-idx='11']::after {
   content: "J";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -543,7 +632,9 @@ body {
 
 .card-front[data-rank-idx='12']::after {
   content: "Q";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -587,7 +678,9 @@ body {
 
 .card-front[data-rank-idx='13']::after {
   content: "K";
-  font-size: 2em;
+  font-size: 1.8em;
+  font-family: 'Wellfleet', cursive;
+  color: white;
   padding-left: 0.2em;
   display: block;
   position: absolute;
@@ -597,6 +690,12 @@ body {
   box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
   cursor: pointer;
   top: -10px;
+}
+
+#nav-bar {
+  background-color: #00a087;
+  width: 100%;
+  z-index: 2;
 }
 
 #all {
@@ -615,7 +714,7 @@ body {
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
@@ -625,7 +724,7 @@ body {
 
 #card1 {
   z-index: 1;
-  animation: a .50s 0.5s infinite;
+  animation: moving1 .50s 0.5s infinite;
 }
 
 #card2 {
@@ -639,10 +738,10 @@ body {
   z-index: 5;
   width: 150px;
   color: black;
-  animation: c 2s infinite;
+  animation: textup 2s infinite;
 }
 
-@keyframes a {
+@keyframes moving1 {
   0% {
   }
   30% {
@@ -653,7 +752,7 @@ body {
   }
 }
 
-@keyframes b {
+@keyframes moving2 {
   0% {
   }
   100% {
@@ -661,7 +760,7 @@ body {
   }
 }
 
-@keyframes c {
+@keyframes textup {
   0% {
     transform: translateY(0px);
   }
@@ -694,7 +793,7 @@ body {
   animation: idk2 1.2s ease infinite;
   background-size: 6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
@@ -837,9 +936,9 @@ body {
 }
 
 #opponent-position {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  position: absolute;
+  top: 0;
+  margin-top: 2em;
 }
 
 #opponent-position .opponent-cards + .opponent-cards {
@@ -853,7 +952,7 @@ body {
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
@@ -862,10 +961,8 @@ body {
 }
 
 .deck {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 45%;
+  left: 45%;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -873,12 +970,109 @@ body {
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
+}
+
+.deck3 {
+  bottom: 45.5%;
+  left: 45%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5.12em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+.deck2 {
+  bottom: 45.7%;
+  left: 45.32%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5.12em;
+  height: 7.93em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 1px black;
+  -moz-box-shadow: 0px 0px 5px 1px black;
+  box-shadow: 0px 0px 5px 1px black;
+}
+
+.dropPile {
+  position: relative;
+  z-index: 2;
+}
+
+.dropPile .card-front {
+  position: absolute;
+  transition: transform 1s;
+  left: 50px;
+  transform-origin: 50% 100%;
+}
+
+.dropPile:hover .card-front:nth-child(1) {
+  transform: translate(0px) rotate(-5deg);
+}
+
+.dropPile:hover .card-front:nth-child(2) {
+  transform: translate(15px) rotate(5deg);
+}
+
+.dropPile:hover .card-front:nth-child(3) {
+  transform: translate(30px) rotate(15deg);
+}
+
+.dropPile:hover .card-front:nth-child(4) {
+  transform: translate(45px) rotate(25deg);
+}
+
+.dropPile .card-front:hover {
+  box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
+  cursor: unset;
+}
+
+.waiting {
+  position: absolute;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16em;
+  z-index: 3;
+  width: 150px;
+  color: black;
+  animation: textup 2s infinite;
+}
+
+@keyframes textup {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .inner {
@@ -892,7 +1086,7 @@ body {
   background: url("https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png");
   background-size: 6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 5px 1px black;

@@ -1,0 +1,23 @@
+.waiting {
+	position: absolute;
+	text-align: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16em;
+	z-index: 3;
+	width: 150px;
+  color: black;
+	animation: textup 2s infinite;
+}
+
+@keyframes textup {
+	0% {transform: translateY(0px)}
+	50% {
+		transform: translateY(20px);
+	}
+	100% {transform: translateY(0px)}
+}

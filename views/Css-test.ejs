@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Game</title>
+    <meta charset="utf-8">
+      <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+  <body>
+    
+    <div id="nav-bar">
+    <a href="/">Home page</a>
+    <a href="/logout">Logout</a>
+    </div>
+    
+    <div class="deck2"></div>
+    <div class="deck3"></div>
+
+
+    <section class="deck"></section>
+    <section id="discard">DISCARD</section>
+    <section id="opponent-position" class="opponent-hand">
+    <div class="opponent-cards"></div>
+    </section>
+    <section class="dropPile">
+
+       <span class="card-front" data-rank-idx="4" data-suit-idx="0"> </span>
+       <span class="card-front" data-rank-idx="4" data-suit-idx="1"> </span>
+       <span class="card-front" data-rank-idx="4" data-suit-idx="2"> </span>   
+       <span class="card-front" data-rank-idx="4" data-suit-idx="3"> </span>
+       
+       <span class="card-front" data-rank-idx="3" data-suit-idx="0"> </span>
+       <span class="card-front" data-rank-idx="3" data-suit-idx="1"> </span>
+       <span class="card-front" data-rank-idx="3" data-suit-idx="2"> </span>   
+       <span class="card-front" data-rank-idx="3" data-suit-idx="3"> </span>
+    </section>
+
+
+
+
+
+    <section class="hand" id='hand-container'>
+    <script id="hand-template" type="text/x-handlebars-template">
+      {{#each userhand}}
+        <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
+      {{/each}}
+     </section>
+    </script>
+    <div class="buttons">
+      <div class"start-turn">
+        <button class='play start draw'>Draw from deck</button>
+        <button class='play start takeTop'>Draw top discard</button>
+        <button class='play start takeAll'>Take all discard</button>
+      </div>
+      <div class"mid-turn">
+        <button class='play mid discard'>Discard and end turn</button>
+        <button class="cool" class='play mid dropSet'>Drop matching set</button>
+        <button class="cool" class='play mid attachOne'>Attach card to drop pile</button>
+      </div>
+    </div>
+  </body>
+</html>

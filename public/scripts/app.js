@@ -32,3 +32,6 @@ myHand.forEach((card) => {
   cardSpan.setAttribute('data-rank-idx', card[0]);
   myHandP.append(cardSpan);
 });
+
+
+

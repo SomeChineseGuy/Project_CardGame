@@ -1,5 +1,8 @@
 node_modules/
 public/styles
 .env
+.DS_Store
+.gitignore
 *.log
 *.sqlite3
+

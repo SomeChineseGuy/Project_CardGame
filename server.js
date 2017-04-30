@@ -134,7 +134,7 @@ app.get('/game', function(req, res) {
     res.redirect('/');
     return;
   }
-  res.render("game1", user2);
+  res.render("game", user2);
 });
 
 app.get('/about', function(req, res, next) {
@@ -218,9 +218,9 @@ io.use(function(socket, next) {
 
 console.log('initial players------------------------', players);
 
-const game1 = io.of('/game1');
+const game = io.of('/game');
 
-game1.on('connection', function(socket) {
+game.on('connection', function(socket) {
   socket.on('add user', function(socketid) {
     if (players.host.socket === null) {
       players.host.socket = socket;
@@ -230,7 +230,7 @@ game1.on('connection', function(socket) {
       players.guest.socket = socket;
       players.guest.id = socket.request.session.userid;
       console.log('GUEST JOINS ===============', players);
-      game1.emit('game ready');
+      game.emit('game ready');
       const deck = deckConstructor.getDeck();
       console.log(deck);
       const startGameState = rummy.startGame(deck, players.host.id, players.guest.id);
@@ -309,12 +309,4 @@ game1.on('connection', function(socket) {
   })
 
 
-});
-
-const game2 = io.of('/game2');
-game2.on('connection', function(socket) {
-  socket.on('add user', function(username){
-    console.log(`Welcome to game 2 ${username}`);
-    socket.emit('game object', JSON.stringify(testObj2));
-  });
 });

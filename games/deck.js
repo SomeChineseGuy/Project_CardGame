@@ -3,7 +3,7 @@ var range = require('lodash/range');
 var shuffle = require('lodash/shuffle');
 
 function newDeck() {
- const suits = ['diamond', 'clubs', 'hearts', 'spades'];
+ const suits = [0, 1, 2, 3];
  return range(52).map(idx => ({
    suit: suits[idx % 4],
    id: idx + 1,

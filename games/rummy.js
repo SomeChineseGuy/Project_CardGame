@@ -93,16 +93,18 @@ function layDownSet(gameState, user_id){
   const user_index = gameState.host === user_id ? 0 : 1;
   const user_hand = gameState.hands[user_index];
   const rankGroups =  groupRanks(user_hand);
+  let rank_to_drop;
   for(let rank in rankGroups){
     if(rankGroups[rank] >= 3){
+      rank_to_drop = rank;
       gameState.drop_pile = gameState.drop_pile.concat(user_hand.filter(card => {
         return card[0] == rank;
       }));
-      gameState.hands[user_index] = user_hand.filter(card => {
-        return card[0] != rank;
-      });
     }
   }
+  gameState.hands[user_index] = user_hand.filter(card => {
+    return card[0] != rank_to_drop;
+  });
   return gameState;
 }
 

@@ -82,6 +82,7 @@ function drawAllCardsFromDiscard(gameState, user_id){
   }
   const user_index = gameState.host === user_id ? 0 : 1;
   gameState.hands[user_index] = gameState.hands[user_index].concat(gameState.discard);
+  gameState.hands[user_index].sort((a, b) => a[2] > b[2]);
   gameState.discard = [];
   return gameState;
 }

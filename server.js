@@ -55,23 +55,39 @@ app.get('/', (req, res) => {
   if(req.session.userid){
     username = req.session.username;
   }
+  let number;
+  let wins;
   let games = {};
-  knex('games')
-      .select('*')
-      .then((rows) => {
+  knex.raw('SELECT COUNT(*) from sessions where user_id = ?', [req.session.userid])
+  .then((result) => {
+    number = result.rows[0].count;
+    return  knex.raw('SELECT COUNT(*) from matches where winner_id = ?', [req.session.userid])
+  }).then((result) => {
+    wins = result.rows[0].count;
+    return  knex('games').select('*')
+  }).then((rows) => {
         if(rows){
           games = rows;
-          res.render('index', {username: username, games: games});
+          res.render('index', {username: username, games: games, number: number, wins: wins});
         } else {
           return Promise.reject({
             type: 409,
             message: 'no games'
           });
         }
-      }).catch((error) => {
-        res.redirect('/');
-      });
+  }).catch((error) => {
+    console.log(error.toString());
+  })
 });
+
+
+// knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
+// .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
+// .where('sessions.user_id', user_id).then((row) => {
+//   console.log(row);
+// }).catch((error) => {
+//   console.log(error.toString());
+// });
 
 
 app.get('/login/:id', (req, res) => {

@@ -1,3 +1,5 @@
-.cardSelected:active {
-      box-shadow: 0 0 .5em .25em green, inset 0 0 .5em .25em lime;
+
+.cardSelected {
+      box-shadow: 0 0 .5em .25em #FFFF00, inset 0 0 .5em .25em #FFFF10;
+      top: -10px;
 }

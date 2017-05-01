@@ -43,34 +43,22 @@
         <div class="opponent-cards"></div>
         {{/times}}
       </section>
-       <section class="deck">DECK</section>
-       <section id="discard">DISCARD</section>
+
+       <section id="discard">
+         <span class="card-front" data-rank-idx="{{discard.[0]}}" data-suit-idx="{{discard.[1]}}"></span>
+       </section>
        <section class="deck"></section>
        <section class="deck2"></section>
        <section class="deck3"></section>
 
+     <section class=“dropPile”>
+      <span class=‘card-set’>
+       {{#each drop_pile}}
+       <span class=‘card-front’ data-suit-idx=1 data-rank-idx=1></span>
+       <span class=‘card-front’ data-suit-idx=2 data-rank-idx=1></span>
+       <span class=‘card-front’ data-suit-idx=3 data-rank-idx=1></span>
+     </span>
 
-    <section class="dropPile">
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
-      </span>
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
-      </span>
-      <span class=card-set>
-        <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
-      </span>
-
-
-
-       
        <div class="player">
       {{#each hand}}
         <span>{{this}}</span>

@@ -24,7 +24,7 @@ function startGame(deck, host_id, guest_id){
   return init_state;
 }
 
-function getMoves(gameState, user_id, first_move){
+function getMoves(gameState, user_id, first_move, last_move){
   if(first_move){
     return init_moves;
   } else {
@@ -39,6 +39,9 @@ function getMoves(gameState, user_id, first_move){
       drop_set: "disabled",
       attach_one: "disabled",
       discard: ""
+    }
+    if(last_move) {
+      moves.discard = "disabled";
     }
     if(has_3_in_hand){
       moves.drop_set = "";

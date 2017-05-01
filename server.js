@@ -349,9 +349,10 @@ game.on('connection', function(socket) {
       oppSocket(socketid).emit('loser');
       return; //update
     } else {
-      const playerMoves = rummy.getMoves(gameState, playerId);
+      const playerMoves = rummy.getMoves(gameState, playerId, false, true);
       const playerView = rummy.filterGameStateForUser(gameState, playerId);
       const oppView = rummy.filterGameStateForUser(gameState, opponentId);
+      const oppMoves = rummy.getMoves(gameState, opponentId, true);
       userSocket(socketid).emit('new state', playerView);
       userSocket(socketid).emit('waitTurn');
       oppSocket(socketid).emit('new state', oppView);

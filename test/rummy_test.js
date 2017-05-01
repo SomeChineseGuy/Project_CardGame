@@ -27,7 +27,7 @@ describe('Rummy', () => {
     describe('#startGame(deck, host_id, guest_id)', () => {
       it('should give me an object with the two players hands, a drop pile, a shuffled deck and the game finished to false', () => {
         expect(rummy.startGame(deck, host_id, guest_id)).to.deep.equal(gameState);
-      })
+      });
     });
   });
 
@@ -76,19 +76,19 @@ describe('Rummy', () => {
         });
         describe('player\'s hand passes the check3OfAKind check', () => {
           beforeEach(() => {
-            gameState.hands = [[[1,2,2],[1,1,4], [1,3,9]], []];
-            gameState.drop_pile = [[1,1,1], [2,3,4], [1,2,6], [1,3,4], [2,2,6], [2,1,4]];
+            gameState.hands = [[[1, 2, 2], [1, 1, 4], [1, 3, 9]], []];
+            gameState.drop_pile = [[1, 1, 1], [2, 3, 4], [1, 2, 6], [1, 3, 4], [2, 2, 6], [2, 1, 4]];
           });
           it('should enable drop card button if the game state passes the check3OfAKind with the discard pile', () => {
             expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.true;
           });
-           it('should enable drop set card button if the game state passes the check3OfAKind with the player\'s hand', () => {
+          it('should enable drop set card button if the game state passes the check3OfAKind with the player\'s hand', () => {
             expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.true;
           });
         });
         describe('player\'s hand does not pass the check3OfAKind check', () => {
           beforeEach(() => {
-            gameState.hands = [[[1,2,2],[1,1,4], [2,3,9]], []];
+            gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 9]], []];
           });
           it('should disable drop card button if the game state does not pass the check3OfAKind with the discard pile', () => {
             expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.false;
@@ -137,7 +137,7 @@ describe('Rummy', () => {
           expect(rummy.drawCardFromDiscard(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should not let a player draw a card if the discard pile is empty', () => {
-           expect(rummy.drawCardFromDiscard(gameState, host_id)).to.deep.equal(gameState);
+          expect(rummy.drawCardFromDiscard(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should add a card to the player\'s hand', () => {
           const cards_in_hand = gameState.hands[0].length;
@@ -153,16 +153,16 @@ describe('Rummy', () => {
           gameState.finished = true;
         });
         it('should not let a player take all pile if there is only one card in the discard pile', () => {
-          gameState.discard = [[1,2,3]];
+          gameState.discard = [[1, 2, 3]];
           expect(rummy.drawAllCardsFromDiscard(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should add all discarded cards to the player\'s hand', () => {
-          gameState.discard = [[1,2,4], [3,2,1], [6,5,4]];
+          gameState.discard = [[1, 2, 4], [3, 2, 1], [6, 5, 4]];
           cards_in_discard = gameState.discard.length;
           expect(rummy.drawAllCardsFromDiscard(gameState, host_id).hands[0].length).to.eq(cards_in_discard + cards_in_hand);
         });
         it('should empty the discard pile', () => {
-          gameState.discard = [[1,2,4], [3,2,1], [6,5,4]];
+          gameState.discard = [[1, 2, 4], [3, 2, 1], [6, 5, 4]];
           expect(rummy.drawAllCardsFromDiscard(gameState, host_id).discard).to.be.empty;
         });
       });
@@ -174,18 +174,18 @@ describe('Rummy', () => {
           expect(rummy.layDownSet(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should not do anything if is not a valid set', () => {
-          gameState.hands = [[[3,2,2],[3,3,8],[2,4,6]], []];
+          gameState.hands = [[[3, 2, 2], [3, 3, 8], [2, 4, 6]], []];
           gameState.drop_pile = [];
           expect(rummy.layDownSet(gameState, host_id).drop_pile).to.be.empty;
         });
         it('should remove the valid set from the user\'s hand', () => {
-          gameState.hands = [[[3,2,2],[3,3,8],[3,4,6]], []];
+          gameState.hands = [[[3, 2, 2], [3, 3, 8], [3, 4, 6]], []];
           expect(rummy.layDownSet(gameState, host_id).hands[0]).to.be.empty;
         });
         it('should add the valid set to the drop pile', () => {
-          gameState.hands = [[[3,2,2],[3,3,8],[3,4,6]], []];
+          gameState.hands = [[[3, 2, 2], [3, 3, 8], [3, 4, 6]], []];
           gameState.drop_pile = [];
-          expect(rummy.layDownSet(gameState, host_id).drop_pile).to.deep.equal([[3,2,2],[3,3,8],[3,4,6]]);
+          expect(rummy.layDownSet(gameState, host_id).drop_pile).to.deep.equal([[3, 2, 2], [3, 3, 8], [3, 4, 6]]);
         });
       });
       describe('#layDownCard(gameState, user_id,)', () => {
@@ -194,19 +194,19 @@ describe('Rummy', () => {
           expect(rummy.layDownCard(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should not do anything if is not a valid card for a set in the drop pile', () => {
-          gameState.hands = [[[1,2,2], [2,3,9]], []];
-          gameState.drop_pile = [[3,2,2],[3,3,8],[3,4,6]];
+          gameState.hands = [[[1, 2, 2], [2, 3, 9]], []];
+          gameState.drop_pile = [[3, 2, 2], [3, 3, 8], [3, 4, 6]];
           expect(rummy.layDownCard(gameState, host_id)).to.deep.equal(gameState);
         });
         it('should remove the valid card from the user\'s hand', () => {
-          gameState.hands = [[[1,2,2],[3,1,4], [2,3,9]], []];
-          gameState.drop_pile = [[3,2,2],[3,3,8],[3,4,6]];
-          expect(rummy.layDownCard(gameState, host_id).hands[0]).to.deep.equal([[1,2,2],[2,3,9]]);
+          gameState.hands = [[[1, 2, 2], [3, 1, 4], [2, 3, 9]], []];
+          gameState.drop_pile = [[3, 2, 2], [3, 3, 8], [3, 4, 6]];
+          expect(rummy.layDownCard(gameState, host_id).hands[0]).to.deep.equal([[1, 2, 2], [2, 3, 9]]);
         });
         it('should add the the valid card to the drop pile set', () => {
-          gameState.hands = [[[1,2,2],[3,1,4], [2,3,9]], []];
-          gameState.drop_pile = [[3,2,2],[3,3,8],[3,4,6]];
-          expect(rummy.layDownCard(gameState, host_id).drop_pile).to.deep.equal([[3,2,2],[3,3,8],[3,4,6],[3,1,4]]);
+          gameState.hands = [[[1, 2, 2], [3, 1, 4], [2, 3, 9]], []];
+          gameState.drop_pile = [[3, 2, 2], [3, 3, 8], [3, 4, 6]];
+          expect(rummy.layDownCard(gameState, host_id).drop_pile).to.deep.equal([[3, 2, 2], [3, 3, 8], [3, 4, 6], [3, 1, 4]]);
         });
       });
       describe('#discardCard(gameState, user_id, card_id)', () => {
@@ -215,37 +215,37 @@ describe('Rummy', () => {
           expect(rummy.discardCard(gameState, host_id, card_id)).to.deep.equal(gameState);
         });
         it('should not do anything if the player have not the card in his/her hand', () => {
-          gameState.hands = [[[1,2,2],[1,1,4], [2,3,9]], []];
+          gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 9]], []];
           expect(rummy.discardCard(gameState, host_id, card_id)).to.deep.equal(gameState);
         });
         it('should remove the valid card from the user\'s hand', () => {
-          gameState.hands = [[[1,2,2],[1,1,4], [2,3,13]], []];
-          expect(rummy.discardCard(gameState, host_id, card_id).hands[0]).to.deep.equal([[1,2,2],[1,1,4]]);
+          gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 13]], []];
+          expect(rummy.discardCard(gameState, host_id, card_id).hands[0]).to.deep.equal([[1, 2, 2], [1, 1, 4]]);
         });
         it('should add the valid card to the discard pile', () => {
-          gameState.hands = [[[1,2,2],[1,1,4], [2,3,13]], []];
-          expect(rummy.discardCard(gameState, host_id, card_id).discard).to.deep.equal([[2,3,13]]);
+          gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 13]], []];
+          expect(rummy.discardCard(gameState, host_id, card_id).discard).to.deep.equal([[2, 3, 13]]);
         });
       });
-    })
+    });
   });
 
   describe('Game visibility', () => {
     describe('#filterGameStateForUser(gameState, user_id)', () => {
       it('should show the user\'s hand', () => {
-        gameState.hands = [[[1,1,1], [2,3,4]], [[3,4,5], [6,7,8]]];
-        expect(rummy.filterGameStateForUser(gameState, host_id).hand).to.deep.equal([[1,1,1], [2,3,4]]);
+        gameState.hands = [[[1, 1, 1], [2, 3, 4]], [[3, 4, 5], [6, 7, 8]]];
+        expect(rummy.filterGameStateForUser(gameState, host_id).hand).to.deep.equal([[1, 1, 1], [2, 3, 4]]);
       });
       it('should not show the other player\'s hand to the player', () => {
-        gameState.hands = [[[1,1,1]], [[3,4,5], [6,7,8]]];
+        gameState.hands = [[[1, 1, 1]], [[3, 4, 5], [6, 7, 8]]];
         expect(rummy.filterGameStateForUser(gameState, host_id).opponent_hand).to.eq(2);
       });
       it('should show an empty array as a discard pile if there is no discard pile', () => {
         expect(rummy.filterGameStateForUser(gameState, host_id).discard).to.be.empty;
       });
       it('should show the last card of the discard pile to the player', () => {
-        gameState.discard = [[1,1,1], [2,3,4]];
-        expect(rummy.filterGameStateForUser(gameState, host_id).discard).to.deep.equal([2,3,4]);
+        gameState.discard = [[1, 1, 1], [2, 3, 4]];
+        expect(rummy.filterGameStateForUser(gameState, host_id).discard).to.deep.equal([2, 3, 4]);
       });
       it('should not show the deck to the player', () => {
         expect(rummy.filterGameStateForUser(gameState, host_id).deck).to.not.instanceof(Array);
@@ -254,64 +254,64 @@ describe('Rummy', () => {
         expect(rummy.filterGameStateForUser(gameState, host_id).deck).to.be.a('number');
       });
       it('should show the grouped drop pile to the player', () => {
-        gameState.drop_pile = [[1,1,1], [2,3,4], [1,2,6], [1,3,4], [2,2,6], [2,1,4]];
-        expect(rummy.filterGameStateForUser(gameState, host_id).drop_pile).to.deep.equal([[[1,1,1], [1,2,6], [1,3,4]], [[2,3,4], [2,2,6], [2,1,4]]]);
-      })
+        gameState.drop_pile = [[1, 1, 1], [2, 3, 4], [1, 2, 6], [1, 3, 4], [2, 2, 6], [2, 1, 4]];
+        expect(rummy.filterGameStateForUser(gameState, host_id).drop_pile).to.deep.equal([[[1, 1, 1], [1, 2, 6], [1, 3, 4]], [[2, 3, 4], [2, 2, 6], [2, 1, 4]]]);
+      });
     });
   });
 
   describe('Check functions', () => {
     describe('#isSetValid(set, rank)', () => {
       it('should return true if the pile has that rank', () => {
-        const set = [[5,2,3], [5,1,6], [5,3,4],[9,4,0]];
+        const set = [[5, 2, 3], [5, 1, 6], [5, 3, 4], [9, 4, 0]];
         const rank = 5;
         expect(rummy.isSetValid(set, rank)).to.be.true;
       });
       it('should return false if the pile does not have that rank', () => {
-        const set = [[5,2,3], [5,1,6], [9,3,4],[9,4,0]];
+        const set = [[5, 2, 3], [5, 1, 6], [9, 3, 4], [9, 4, 0]];
         const rank = 5;
         expect(rummy.isSetValid(set, rank)).to.be.false;
       });
     });
     describe('#check3OfAKind(gameState, user_id)', () => {
       it('should return true if the hand has 3 cards with the same rank', () => {
-        gameState.hands = [[[1,2,2],[1,1,4], [1,3,9]], []];
+        gameState.hands = [[[1, 2, 2], [1, 1, 4], [1, 3, 9]], []];
         expect(rummy.check3OfAKind(gameState.hands[0])).to.be.true;
       });
       it('should return true if the hand has 4 cards with the same rank', () => {
-        gameState.hands = [[[1,2,2],[1,1,4], [1,3,9], [1,4,6]], []];
+        gameState.hands = [[[1, 2, 2], [1, 1, 4], [1, 3, 9], [1, 4, 6]], []];
         expect(rummy.check3OfAKind(gameState.hands[0])).to.be.true;
       });
       it('should return false if the hand has no rank with 3 cards', () => {
-        gameState.hands = [[[1,2,2],[1,1,4], [2,3,9], [2,4,6]], []];
+        gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 9], [2, 4, 6]], []];
         expect(rummy.check3OfAKind(gameState.hands[0])).to.be.false;
       });
     });
     describe('#checkWinnerCondition(gameState, user_id)', () => {
       it('should return true if the user has one card left in his/her hand', () => {
-        gameState.hands = [[[1,1,1]], [[3,4,5], [6,7,8]]];
+        gameState.hands = [[[1, 1, 1]], [[3, 4, 5], [6, 7, 8]]];
         expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.true;
       });
       it('should return true if the user has no cards left in his/her hand', () => {
-        gameState.hands = [[], [[3,4,5], [6,7,8]]];
+        gameState.hands = [[], [[3, 4, 5], [6, 7, 8]]];
         expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.true;
       });
       it('should return false if the user has more than one card left in his/her hand', () => {
-        gameState.hands = [[[3,4,5], [6,7,8]], []];
+        gameState.hands = [[[3, 4, 5], [6, 7, 8]], []];
         expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.false;
       });
       it('should return true if the deck is empty and the user has less cards left than the opponent', () => {
         gameState.deck = [];
         gameState.discard = [];
-        gameState.hands = [[[3,4,5], [2,3,4]], [[3,4,5], [6,7,8], [4,5,6]]];
+        gameState.hands = [[[3, 4, 5], [2, 3, 4]], [[3, 4, 5], [6, 7, 8], [4, 5, 6]]];
         expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.true;
       });
       it('should return false if the deck is empty and the user has more cards left than the opponent', () => {
         gameState.deck = [];
         gameState.discard = [];
-        gameState.hands = [[[3,4,5], [6,7,8], [1,1,1]], [[3,4,5], [6,7,8]]];
+        gameState.hands = [[[3, 4, 5], [6, 7, 8], [1, 1, 1]], [[3, 4, 5], [6, 7, 8]]];
         expect(rummy.checkWinnerCondition(gameState, host_id)).to.be.false;
       });
     });
   });
-})
+});

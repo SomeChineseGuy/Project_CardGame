@@ -6,4 +6,4 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   return router;
-}
+};

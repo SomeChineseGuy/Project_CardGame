@@ -635,11 +635,50 @@ body {
   top: -10px;
 }
 
-#nav-bar {
-  background-color: grey;
+.nav-bar-holder {
+  margin: 0 auto;
+  width: 80%;
+}
+
+nav {
+  margin-top: 3em;
+  display: table;
   width: 100%;
-  z-index: 2;
-  height: 3.4em;
+  height: 1.4em;
+  border-collapse: collapse;
+  border: none;
+}
+
+nav ul {
+  display: table-row;
+}
+
+nav li {
+  display: table-cell;
+  margin: 0;
+  text-align: center;
+}
+
+nav li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Verdana, Sans-Serif;
+  font-size: 1em;
+  color: #FFFFFF;
+  border-bottom: 0.1em solid #D9691E;
+  background-color: chocolate;
+}
+
+nav li a:hover {
+  background: sandybrown;
+  display: block;
+}
+
+.active {
+  background-color: peru;
+  display: block;
 }
 
 #all {

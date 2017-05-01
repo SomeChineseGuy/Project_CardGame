@@ -54,14 +54,14 @@
         </div>
 
       <div class='start-turn'>
-        <button class='play start draw'>Draw from deck</button>
-        <button class='play start takeTop'>Draw top discard</button>
-        <button class='play start takeAll'>Take all discard</button>
+        <button class='play start draw' {{moves.draw}}>Draw from deck</button>
+        <button class='play start takeTop' {{moves.take_top}}>Draw top discard</button>
+        <button class='play start takeAll' {{moves.take_all}}>Take all discard</button>
       </div>
       <div class='mid-turn'>
-        <button class='play mid dropSet cool'>Drop matching set</button>
-        <button class='play mid attachOne cool'>Attach card to drop pile</button>
-        <button class='play mid discard'>Discard and end turn</button>
+        <button class='play mid dropSet cool' {{moves.drop_set}}>Drop matching set</button>
+        <button class='play mid attachOne cool' {{moves.attach_one}}>Attach card to drop pile</button>
+        <button class='play mid discard' {{moves.discard}}>Discard and end turn</button>
       </div>
     </script>
     <script type="text/javascript" src="/scripts/game.js"></script>

@@ -9,12 +9,12 @@ const init_state = {
 };
 
 const init_moves = {
-    draw: true,
-    take_top: true,
-    take_all: true,
-    drop_set: false,
-    attach_one: false,
-    discard: false
+    draw: "",
+    take_top: "",
+    take_all: "",
+    drop_set: "disabled",
+    attach_one: "disabled",
+    discard: "disabled"
 }
 
 function startGame(deck, host_id, guest_id){
@@ -33,18 +33,18 @@ function getMoves(gameState, user_id, first_move){
     const has_3_in_hand = check3OfAKind(user_hand);
     const has_1_for_drop_pile = isCardValidForDropPile(user_hand, gameState.drop_pile);
     const moves = {
-      draw: false,
-      take_top: false,
-      take_all: false,
-      drop_set: false,
-      attach_one: false,
-      discard: true
+      draw: "disabled",
+      take_top: "disabled",
+      take_all: "disabled",
+      drop_set: "disabled",
+      attach_one: "disabled",
+      discard: ""
     }
     if(has_3_in_hand){
-      moves.drop_set = true;
+      moves.drop_set = "";
     }
     if(has_1_for_drop_pile){
-      moves.attach_one = true;
+      moves.attach_one = "";
     }
     return moves;
   }
@@ -72,9 +72,7 @@ function drawCardFromDiscard(gameState, user_id) {
     return gameState;
   }
   const user_index = gameState.host === user_id ? 0 : 1;
-  console.log(gameState.discard);
-  console.log(gameState.discard.pop());
-  gameState.hands[user_index] = gameState.hands[user_index].concat(gameState.discard.pop());
+  gameState.hands[user_index].push(gameState.discard.pop());
   return gameState;
 }
 

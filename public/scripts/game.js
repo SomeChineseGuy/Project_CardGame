@@ -17,7 +17,7 @@
     }
 
   function endTurn() { $('.play').prop('disabled', true)}
-  function endStart() { $('.play.start').prop('disabled', true)}
+  function endStart() { /*$('.play.start').prop('disabled', true)*/}
   function startTurn() {$('.play').prop('disabled', false)}
 
 
@@ -60,25 +60,30 @@
 
   socket.on('winner', () => {
     alert('you win!');
-    setTimeout(()=> window.location = '/', 2000);
+    setTimeout(()=> window.location = '/', 1000);
+  });
+
+  socket.on('loser', () => {
+    alert('Sorry you lose');
+    setTimeout(() => window.location = '/', 1000);
   });
 
 
   $(document).on('click','.draw', (e) => {
     console.log('click');
-    e.preventDefault();
     endStart();
+    e.preventDefault();
     socket.emit('draw', '/game#' + socket.id);
   });
 
   $(document).on('click', '.takeTop', (e) => {
-    e.preventDefault();
     endStart();
+    e.preventDefault();
     socket.emit('takeTop', '/game#' + socket.id);
   });
   $(document).on('click', '.takeAll', (e) => {
-    e.preventDefault();
     endStart();
+    e.preventDefault();
     socket.emit('takeAll', '/game#' + socket.id);
   });
 
@@ -87,11 +92,11 @@
     socket.emit('discard', '/game#' + socket.id);
   });
 
-  $(document).on('click', 'dropSet', () => {
+  $(document).on('click', '.dropSet', (e) => {
     e.preventDefault();
     socket.emit('dropSet', '/game#' + socket.id);
   });
-  $(document).on('click', 'attachOne', (e) => {
+  $(document).on('click', '.attachOne', (e) => {
     e.preventDefault();
     socket.emit('attachOne', '/game#' + socket.id)
   });

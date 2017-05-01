@@ -59,13 +59,13 @@
   });
 
   socket.on('winner', () => {
-    alert('you win!');
-    setTimeout(()=> window.location = '/', 1000);
+    $('body').append("<div class='win'>Congratulations you win! </div>")
+    setTimeout(()=> window.location = '/', 5000);
   });
 
   socket.on('loser', () => {
-    alert('Sorry you lose');
-    setTimeout(() => window.location = '/', 1000);
+    $('body').append("<div class='lose'>Sorry you lost</div>");
+    setTimeout(() => window.location = '/', 5000);
   });
 
 

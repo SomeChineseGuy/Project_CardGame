@@ -52,16 +52,19 @@
        <section class="deck3"></section>
 
      <section class=“dropPile”>
+      {{#each drop_pile}}
       <span class=‘card-set’>
-       {{#each drop_pile}}
-       <span class=‘card-front’ data-suit-idx=1 data-rank-idx=1></span>
-       <span class=‘card-front’ data-suit-idx=2 data-rank-idx=1></span>
-       <span class=‘card-front’ data-suit-idx=3 data-rank-idx=1></span>
-     </span>
+       <span class=‘card-front’ data-suit-idx={{this.[0].[1]}} data-rank-idx={{this.[0].[0]}}>{{this}}</span>
+       <span class=‘card-front’ data-suit-idx={{this.[1].[1]}} data-rank-idx={{this.[1].[0]}}></span>
+       <span class=‘card-front’ data-suit-idx={{this.[2].[1]}} data-rank-idx={{this.[2].[0]}}></span>
+       </span>
+       {{/each}}
+
+     </section>
 
        <div class="player">
       {{#each hand}}
-        <span>{{this}}</span>
+        <span></span>
         <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
         {{/each}}
 

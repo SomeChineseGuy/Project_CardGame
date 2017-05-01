@@ -82,9 +82,9 @@ app.get('/', (req, res) => {
 });
 
 
-// knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
+// knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE 0 END) AS wins', [1]))
 // .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
-// .where('sessions.user_id', user_id).then((row) => {
+// .where('sessions.user_id', 1).then((row) => {
 //   console.log(row);
 // }).catch((error) => {
 //   console.log(error.toString());

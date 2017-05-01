@@ -15,6 +15,15 @@
     }
 
 
+  function endTurn() { /*$('.play').prop('disabled', true)*/}
+  function endStart() { /*$('.play.start').prop('disabled', true)*/}
+  function startTurn() {/*$('.play').prop('disabled', false)*/}
+
+    // function endTurn() { $('.play').prop('disabled', true); }
+    // function endStart() { /*$('.play.start').prop('disabled', true)*/ }
+    // function startTurn() { $('.play').prop('disabled', false); }
+
+
 
     Handlebars.registerHelper('times', function(n, block) {
       var accum = '';

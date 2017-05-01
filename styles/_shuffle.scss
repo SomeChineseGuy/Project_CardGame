@@ -1,6 +1,3 @@
-// Remember to change POSITION to "absolute"
-
-
 #all {
 	position: absolute;
 	margin: auto;
@@ -18,7 +15,7 @@
   background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
   background-size:6em 7.25em;
   background-position: center;
-  width: 5em;
+  width: 5.12em;
   height: 7.93em;
   border-radius: 10px;
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
@@ -28,7 +25,7 @@
 
 #card1 {
 	z-index: 1;
-	animation: a .50s 0.5s infinite;
+	animation: moving1 .50s 0.5s infinite;
 }
 
 #card2 {
@@ -41,9 +38,9 @@
 	z-index:5;
 	width:150px;
 	color:black;
-	animation: c 2s infinite;
+	animation: textup 2s infinite;
 }
-@keyframes a {
+@keyframes moving1 {
 	0% {}
 	30% {
 		transform: translateX(205px) rotate(70deg) rotateY(80deg);
@@ -54,13 +51,13 @@
 	}
 }
 
-@keyframes b {
+@keyframes moving2 {
 	0% {}
 	100% {
 		z-index: 2;
 	}
 }
-@keyframes c {
+@keyframes textup {
 	0% {transform: translateY(0px)}
 	50% {
 		transform: translateY(10px);

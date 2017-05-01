@@ -1,8 +1,6 @@
 .deck {
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	bottom: 45%;
+	left: 45%;
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -10,7 +8,43 @@
   background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
   background-size:6em 7.25em;
 	background-position: center;
-  width: 5em;
+  width: 5.12em;
+  height: 7.93em;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.deck3 {
+	bottom: 45.5%;
+	left: 45%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
+  background-size:6em 7.25em;
+	background-position: center;
+  width: 5.12em;
+  height: 7.93em;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);
+}
+
+.deck2 {
+	bottom: 45.7%;
+	left: 45.32%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  background:url('https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/807/s300/lighthouse-labs-logo-compressor.png');
+  background-size:6em 7.25em;
+	background-position: center;
+  width: 5.12em;
   height: 7.93em;
 	border-radius: 5px;
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 1);

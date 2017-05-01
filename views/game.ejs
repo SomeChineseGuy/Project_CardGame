@@ -9,23 +9,69 @@
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
   </head>
   <body>
-  <div id="nav-bar">
-    <a href="/">Home page</a>
-    <a href="/logout">Logout</a>
+  <div class="nav-bar-holder">
+    <nav>
+      <ul>
+        <li><a href="/">Home page</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
   </div>
-    <section id="shuffleAnimation"></section>
-    <script id="shuffleAnim" type="text/x-handlebars-template">
-      <div class="hold">
-        <div class="inside">
-        {{#times 16}}
-          <div class="cards"></div>
-        {{/times}}
+  <section id="shuffleAnimation"></section>
+  <script id="shuffleAnim" type="text/x-handlebars-template">
+    <div class="hold">
+      <div class="inside">
+      {{#times 16}}
+        <div class="cards"></div>
+      {{/times}}
+      </div>
+      <div class="inside what">
+      {{#times 16}}
+        <div class="cards"></div>
+      {{/times}}
+      </div>
+    </div>
+  </script>
+    <section class="hand" id='hand-container'></section>
+    <script id="handTemp" type="text/x-handlebars-template">
+    <section id="opponent-position" class="opponent-hand">
+      {{#times opponent_hand}}
+      <div class="opponent-cards"></div>
+      {{/times}}
+    </section>
+    <section class="deck"></section>
+    <section class="deck2"></section>
+    <section class="deck3"></section>
+    <section id="discard">DISCARD</section>    
+    <div class="player">
+     {{#each hand}}
+      <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
+      {{/each}}
+    </div>
+      <div class="buttons">
+        <div class='start-turn'>
+         <button class='play start draw round yellow' {{moves.draw}}>Draw <span class="round">Draw the top card from the deck.</span></button>
         </div>
-        <div class="inside what">
-        {{#times 16}}
-          <div class="cards"></div>
-        {{/times}}
+        <div class='start-turn'>
+        <button class='play start takeTop round yellow' {{moves.take_top}}>Top<span class="round">Draw the top card from the discard pile.</span></button>
         </div>
+        <div class='start-turn'>
+        <button class='play start takeAll round yellow' {{moves.take_all}}>All<span class="round">Take the whole discard pile.</span></button>
+        </div>
+      </div>
+      <div class="buttons2">
+        <div class='mid-turn'>
+        <button class='play mid dropSet round blue cool' {{moves.drop_set}}>Drop <span class="round">Drop a set of 3 or 4 cards from your hand.</span></button>
+        </div>
+        <div class='mid-turn'>
+          <button class='play mid attachOne round blue cool' {{moves.attach_one}}>Attach <span class="round">Attach the fourth card to the drop pile.</span></button>
+        </div>
+        <div class='mid-turn'>
+        <button class='play mid discard round red' {{moves.discard}}>Discard<span class="round">Discarding your card will end your turn.</span> </button>
+        </div>
+      </div>
+
       </div>
     </script>
 
@@ -43,55 +89,32 @@
         <div class="opponent-cards"></div>
         {{/times}}
       </section>
-       <section class="deck">DECK</section>
-       <section id="discard">DISCARD</section>
+
+       <section id="discard">
+         <span class="card-front" data-rank-idx="{{discard.[0]}}" data-suit-idx="{{discard.[1]}}"></span>
+       </section>
        <section class="deck"></section>
        <section class="deck2"></section>
        <section class="deck3"></section>
 
+     <section class=“dropPile”>
+      {{#each drop_pile}}
+      <span class=‘card-set’>
+       <span class=‘card-front’ data-suit-idx={{this.[0].[1]}} data-rank-idx={{this.[0].[0]}}>{{this}}</span>
+       <span class=‘card-front’ data-suit-idx={{this.[1].[1]}} data-rank-idx={{this.[1].[0]}}></span>
+       <span class=‘card-front’ data-suit-idx={{this.[2].[1]}} data-rank-idx={{this.[2].[0]}}></span>
+       </span>
+       {{/each}}
 
-    <section class="dropPile">
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
-      </span>
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
-      </span>
-      <span class=card-set>
-        <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
-      </span>
+     </section>
 
-
-
-       
        <div class="player">
       {{#each hand}}
-        <span>{{this}}</span>
+        <span></span>
         <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
         {{/each}}
-
-        </div>
-
-      <div class='start-turn'>
-        <button class='play start draw' {{moves.draw}}>Draw from deck</button>
-        <button class='play start takeTop' {{moves.take_top}}>Draw top discard</button>
-        <button class='play start takeAll' {{moves.take_all}}>Take all discard</button>
-      </div>
-      <div class='mid-turn'>
-        <button class='play mid dropSet cool' {{moves.drop_set}}>Drop matching set</button>
-        <button class='play mid attachOne cool' {{moves.attach_one}}>Attach card to drop pile</button>
-        <button class='play mid discard' {{moves.discard}}>Discard and end turn</button>
-      </div>
     </script>
     <script type="text/javascript" src="/scripts/game.js"></script>
-    <div class="win"> </div>
-    <div class="lose"> </div>
   </body>
 </html>
+

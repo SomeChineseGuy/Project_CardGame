@@ -13,7 +13,7 @@ const knexConfig  = require('./knexfile');
 const knex        = require('knex')(knexConfig[ENV]);
 const cookieSession = require('cookie-session');
 const io          = require('socket.io')(server);
-const deckConstructor = require ('./games/deck.js');
+const deckConstructor = require('./games/deck.js');
 const rummy = require('./games/rummy.js');
 
 let morgan;
@@ -62,23 +62,23 @@ app.get('/', (req, res) => {
   knex.raw('SELECT COUNT(*) from sessions where user_id = ?', [user_id])
   .then((result) => {
     number = result.rows[0].count;
-    return  knex.raw('SELECT COUNT(*) from matches where winner_id = ?', [user_id])
+    return  knex.raw('SELECT COUNT(*) from matches where winner_id = ?', [user_id]);
   }).then((result) => {
     wins = result.rows[0].count;
-    return  knex('games').select('*')
+    return  knex('games').select('*');
   }).then((rows) => {
-        if(rows){
-          games = rows;
-          res.render('index', {username: username, games: games, number: number, wins: wins});
-        } else {
-          return Promise.reject({
-            type: 409,
-            message: 'no games'
-          });
-        }
+    if(rows){
+      games = rows;
+      res.render('index', {username: username, games: games, number: number, wins: wins});
+    } else {
+      return Promise.reject({
+        type: 409,
+        message: 'no games'
+      });
+    }
   }).catch((error) => {
     console.log(error.toString());
-  })
+  });
 });
 
 
@@ -137,9 +137,9 @@ app.get('/login/:id', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    req.session = null;
-    res.redirect('/');
-  });
+  req.session = null;
+  res.redirect('/');
+});
 
 app.get('/game', function(req, res) {
   if(players.host.id && players.guest.id){
@@ -164,22 +164,22 @@ app.get('/test', function(req, res) {
 
 
 
-  const user2 = {
-    deck: 30,
-    discard: [1, 0, 1],
-    userhand: [[1, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 10], [4, 3, 8], [5, 3, 9], [6, 3, 10], [7, 3, 8], [8, 3, 9], [9, 3, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
+const user2 = {
+  deck: 30,
+  discard: [1, 0, 1],
+  userhand: [[1, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 10], [4, 3, 8], [5, 3, 9], [6, 3, 10], [7, 3, 8], [8, 3, 9], [9, 3, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
                [0, 1, 7], [1, 1, 8], [2, 1, 9], [3, 1, 11], [4, 1, 8], [5, 1, 9], [6, 1, 11], [7, 1, 8], [8, 1, 9], [9, 1, 11], [10, 1, 8], [11, 1, 9]],
-    oppHandCount: 5,
-    dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
-    availablePlays: {
-      draw: 0,
-      takeTop: 0,
-      takeAll: 0,
-      drop3: 0,
-      drop1: 0,
-      discard: 0
-    }
-  };
+  oppHandCount: 5,
+  dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
+  availablePlays: {
+    draw: 0,
+    takeTop: 0,
+    takeAll: 0,
+    drop3: 0,
+    drop1: 0,
+    discard: 0
+  }
+};
 
 
 
@@ -205,13 +205,13 @@ server.listen(PORT, () => {
 
 function userID(socketid) { return players.host.socket.id === socketid ? players.host.id : players.guest.id; }
 function oppID (socketid) { return players.host.socket.id === socketid ? players.guest.id : players.host.id; }
-function userSocket (socketid) { return players.host.socket.id === socketid ? players.host.socket : players.guest.socket;}
-function oppSocket (socketid) { return players.host.socket.id === socketid ? players.guest.socket : players.host.socket;}
-function resetPlayer(obj) { obj.id = null; obj.socket = null}
-function userState(socketid) {return players.host.socket.id === socketid ? players.host.state : players.guest.state;}
+function userSocket (socketid) { return players.host.socket.id === socketid ? players.host.socket : players.guest.socket; }
+function oppSocket (socketid) { return players.host.socket.id === socketid ? players.guest.socket : players.host.socket; }
+function resetPlayer(obj) { obj.id = null; obj.socket = null; }
+function userState(socketid) { return players.host.socket.id === socketid ? players.host.state : players.guest.state; }
 function oppState (socketid) { return players.host.socket.id === socketid ? players.guest.state : players.host.state; }
-function userHostGuest (socketid) {return players.host.socket.id === socketid ? 'host' : 'guest'}
-function oppHostGuest (socketid) {return players.host.socket.id === socketid ? 'guest' : 'host'}
+function userHostGuest (socketid) { return players.host.socket.id === socketid ? 'host' : 'guest'; }
+function oppHostGuest (socketid) { return players.host.socket.id === socketid ? 'guest' : 'host'; }
 function insertMatchInfo () {
   knex('matches').insert({game_id: 1, winner_id: players.host.id}, 'id').then((id) => {
     if(id){
@@ -226,7 +226,7 @@ function insertMatchInfo () {
   }).then((id) => {
     return knex('sessions').insert({user_id: players.guest.id, match_id: Number(id)}, 'match_id');
   }).catch((error) => {
-     console.log(error.toString());
+    console.log(error.toString());
   });
 }
 
@@ -235,7 +235,7 @@ function insertWinner (match, winner){
   .where('match_id', '=', match)
   .update({
     winner_id: winner
-  })
+  });
 }
 
 
@@ -253,7 +253,7 @@ const players = {
     socket: null,
     username: null
   },
-  match : null
+  match: null
 };
 
 io.use(function(socket, next) {
@@ -274,7 +274,7 @@ game.on('connection', function(socket) {
       game.emit('game ready');
       const deck = deckConstructor.getDeck();
       const startGameState = rummy.startGame(deck, players.host.id, players.guest.id);
-      gameState = rummy.drawCard(startGameState,players.host.id, true);
+      gameState = rummy.drawCard(startGameState, players.host.id, true);
       const hostView = rummy.filterGameStateForUser(gameState, players.host.id);
       hostView.moves = rummy.getMoves(gameState, players.host.id, false);
       const guestView = rummy.filterGameStateForUser(gameState, players.guest.id);
@@ -292,11 +292,11 @@ game.on('connection', function(socket) {
   });
   socket.on('disconnect', () =>{
     if (players.host.socket && socket.id === players.host.socket.id ){
-      insertWinner (players.match, players.guest.id);
+      insertWinner(players.match, players.guest.id);
       resetPlayer(players.host);
       socket.broadcast.emit('winner', players.guest.id);
     } else if (players.guest.socket && socket.id === players.guest.socket.id) {
-      insertWinner (players.match, players.host.id);
+      insertWinner(players.match, players.host.id);
       resetPlayer(players.guest);
       socket.broadcast.emit('winner', players.host.id);
     }
@@ -341,7 +341,7 @@ game.on('connection', function(socket) {
   socket.on('discard', (socketid) => {
     const playerId = userID(socketid);
     const opponentId = oppID(socketid);
-    const hostGuest = userHostGuest(socketid) === 'host'? 0 : 1;
+    const hostGuest = userHostGuest(socketid) === 'host' ? 0 : 1;
     const discardID = gameState.hands[hostGuest][0][2];
     gameState = rummy.discardCard(gameState, playerId, discardID);
     if(rummy.checkWinnerCondition(gameState, playerId, true)){
@@ -386,14 +386,14 @@ game.on('connection', function(socket) {
       userSocket(socketid).emit('winner');
       oppSocket(socketid).emit('loser');
     } else {
-    const playerMoves = rummy.getMoves(gameState, playerId);
-    const playerView = rummy.filterGameStateForUser(gameState, playerId);
-    playerView.moves = playerMoves;
-    const oppView = rummy.filterGameStateForUser(gameState, opponentId);
-    userSocket(socketid).emit('new state', playerView);
-    oppSocket(socketid).emit('new state', oppView);
+      const playerMoves = rummy.getMoves(gameState, playerId);
+      const playerView = rummy.filterGameStateForUser(gameState, playerId);
+      playerView.moves = playerMoves;
+      const oppView = rummy.filterGameStateForUser(gameState, opponentId);
+      userSocket(socketid).emit('new state', playerView);
+      oppSocket(socketid).emit('new state', oppView);
     }
-  })
+  });
 
 
 

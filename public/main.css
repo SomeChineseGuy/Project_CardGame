@@ -70,6 +70,44 @@ body {
   }
 }
 
+.dropPile {
+  position: relative;
+  z-index: 2;
+}
+
+.dropPile .card-front {
+  position: absolute;
+  transition: transform 1s;
+  left: 50px;
+  transform-origin: 50% 100%;
+}
+
+.dropPile:hover .card-front:nth-child(1) {
+  transform: translate(0px) rotate(-5deg);
+}
+
+.dropPile:hover .card-front:nth-child(2) {
+  transform: translate(15px) rotate(5deg);
+}
+
+.dropPile:hover .card-front:nth-child(3) {
+  transform: translate(30px) rotate(15deg);
+}
+
+.dropPile:hover .card-front:nth-child(4) {
+  transform: translate(45px) rotate(25deg);
+}
+
+.dropPile .card-front:hover {
+  box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
+  cursor: unset;
+}
+
+.card-set {
+  position: relative;
+  margin: 3em;
+}
+
 .card-front {
   position: relative;
   float: left;
@@ -920,11 +958,22 @@ body {
   }
 }
 
-#hand-container .card-front + .card-front {
+.player {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.player .card-front + .card-front {
   margin-left: -3em;
 }
 
-.hand {
+.handTemp {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1012,39 +1061,6 @@ body {
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
-}
-
-.dropPile {
-  position: relative;
-  z-index: 2;
-}
-
-.dropPile .card-front {
-  position: absolute;
-  transition: transform 1s;
-  left: 50px;
-  transform-origin: 50% 100%;
-}
-
-.dropPile:hover .card-front:nth-child(1) {
-  transform: translate(0px) rotate(-5deg);
-}
-
-.dropPile:hover .card-front:nth-child(2) {
-  transform: translate(15px) rotate(5deg);
-}
-
-.dropPile:hover .card-front:nth-child(3) {
-  transform: translate(30px) rotate(15deg);
-}
-
-.dropPile:hover .card-front:nth-child(4) {
-  transform: translate(45px) rotate(25deg);
-}
-
-.dropPile .card-front:hover {
-  box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
-  cursor: unset;
 }
 
 .waiting {

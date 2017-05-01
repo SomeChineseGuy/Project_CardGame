@@ -14,8 +14,30 @@
     <a href="/logout">Logout</a>
     </div>
     <!-- Change opacity to zero with time -->
-      <section class="hand" id='hand-container'>
-      <script id=“handTemp” type=“text/x-handlebars-template”>
+      <section class="hand" id='hand-container'></section>
+      <script id="handTemp" type="text/x-handlebars-template">
+
+
+    <section class="dropPile">
+      <span class='card-set'>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
+      </span>
+      <span class='card-set'>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
+      </span>
+      <span class='card-set'>
+      <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
+      <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
+      <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
+      <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
+      </span>
+
+
+
       <section id="opponent-position" class="opponent-hand">
         {{#times opponent_hand}}
         <div class="opponent-cards"></div>
@@ -26,12 +48,12 @@
        <section class="deck3"></section>
        <section id="discard">DISCARD</section>
 
-
-       
+       <div class="player">
       {{#each hand}}
         <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"></span>
         {{/each}}
-      </section>
+        </div>
+
       <p class="waiting"> WAIT FOR YOUR TURN!!!!!! </p>
       <div class='start-turn'>
         <button class='play start draw'>Draw from deck</button>

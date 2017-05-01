@@ -1,13 +1,10 @@
 .dropPile {
  position:relative;
  z-index: 2;
-}
-
-.dropPile data-rank-idx {
   .card-front{
     position:absolute;
     transition: transform 1s;
-    left:50px;
+    left: 50px;
     transform-origin: 50% 100%;
   }
   &:hover{
@@ -22,6 +19,11 @@
 .dropPile .card-front:hover {
 	box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
   cursor: unset;
+}
+
+.card-set {
+  position:relative;
+  margin: 3em;
 }
 
 

@@ -4,7 +4,7 @@
   // READ
 
 
-    const templateText = $('#hand-container').text()
+    const templateText = $('#handTemp').text()
     const pageTemplate = Handlebars.compile(templateText);
     console.log(pageTemplate);
     function renderPage (stateData) {

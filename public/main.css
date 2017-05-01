@@ -1115,8 +1115,8 @@ nav li a:hover {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD
-=======
+
+
 .cardPile {
   position: relative;
   z-index: 3;
@@ -1390,10 +1390,8 @@ button.yellow:hover {
   background: rgba(161, 145, 0, 0.7);
 }
 
-<<<<<<< HEAD
+
 .cardSelected:active {
-=======
-.cardSelected {
->>>>>>> 9727c8b033a48b0add6f08da6e1b8b685df4ee49
+
   box-shadow: 0 0 .5em .25em green, inset 0 0 .5em .25em lime;
 }

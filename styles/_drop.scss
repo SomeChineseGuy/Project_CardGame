@@ -1,4 +1,5 @@
-.dropPile {
+.cardPile
+ {
  position:relative;
  z-index: 3;
  padding-top: 5em;
@@ -18,12 +19,10 @@
     }
   }
 }
-
 .dropPile .card-front:hover {
 	box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
   cursor: unset;
 }
-
 .card-set {
   position:relative;
   margin: 4.2em;

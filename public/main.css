@@ -1074,7 +1074,7 @@ nav li a:hover {
   border-radius: 5px;
 }
 
-.dropPile {
+.cardPile {
   position: relative;
   z-index: 3;
   padding-top: 5em;
@@ -1082,30 +1082,30 @@ nav li a:hover {
   width: 750;
 }
 
-.dropPile .card-front {
+.cardPile .card-front {
   position: absolute;
   transition: transform 1s;
   left: 50px;
   transform-origin: 50% 100%;
 }
 
-.dropPile:hover .card-front:nth-child(1) {
+.cardPile:hover .card-front:nth-child(1) {
   transform: translate(5px) rotate(-4deg);
 }
 
-.dropPile:hover .card-front:nth-child(2) {
+.cardPile:hover .card-front:nth-child(2) {
   transform: translate(20px) rotate(4deg);
 }
 
-.dropPile:hover .card-front:nth-child(3) {
+.cardPile:hover .card-front:nth-child(3) {
   transform: translate(35px) rotate(12deg);
 }
 
-.dropPile:hover .card-front:nth-child(4) {
+.cardPile:hover .card-front:nth-child(4) {
   transform: translate(50px) rotate(20deg);
 }
 
-.dropPile .card-front:hover {
+.cardPile .card-front:hover {
   box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
   cursor: unset;
 }

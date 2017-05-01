@@ -1,4 +1,4 @@
- $(document).ready(function(){
+  $(document).ready(function(){
 
 
     const shuffleText = $('#shuffleAnim').text();
@@ -15,13 +15,10 @@
     }
 
 
-  function endTurn() { /*$('.play').prop('disabled', true)*/}
-  function endStart() { /*$('.play.start').prop('disabled', true)*/}
-  function startTurn() {/*$('.play').prop('disabled', false)*/}
+  function endTurn() { $('.play').prop('disabled', true)}
+  function endStart() { $('.play.start').prop('disabled', true)}
+  function startTurn() {$('.play').prop('disabled', false)}
 
-    // function endTurn() { $('.play').prop('disabled', true); }
-    // function endStart() { /*$('.play.start').prop('disabled', true)*/ }
-    // function startTurn() { $('.play').prop('disabled', false); }
 
 
 
@@ -47,6 +44,7 @@
     });
     socket.on('firstTurn', () => endStart());
     socket.on('waitTurn', () => {
+      endTurn();
       $('body').append("<p class='waiting'>Waiting for Opponent</p>");
     });
     socket.on('startTurn', () => {
@@ -113,3 +111,4 @@
 
 
 });
+

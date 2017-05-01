@@ -39,7 +39,7 @@ function getMoves(gameState, user_id, first_move){
       drop_set: "disabled",
       attach_one: "disabled",
       discard: ""
-
+    }
     if(has_3_in_hand){
       moves.drop_set = "";
     }

@@ -1,21 +1,21 @@
 const init_state = {
-    deck: [],
-    host: 0,
-    guest: 0,
-    discard: [],
-    drop_pile: [],
-    hands: [[], []],
-    finished: false
+  deck: [],
+  host: 0,
+  guest: 0,
+  discard: [],
+  drop_pile: [],
+  hands: [[], []],
+  finished: false
 };
 
 const init_moves = {
-    draw: "",
-    take_top: "",
-    take_all: "",
-    drop_set: "disabled",
-    attach_one: "disabled",
-    discard: "disabled"
-}
+  draw: "",
+  take_top: "",
+  take_all: "",
+  drop_set: "disabled",
+  attach_one: "disabled",
+  discard: "disabled"
+};
 
 function startGame(deck, host_id, guest_id){
   init_state.deck = deck;
@@ -39,7 +39,7 @@ function getMoves(gameState, user_id, first_move){
       drop_set: "disabled",
       attach_one: "disabled",
       discard: ""
-    }
+    };
     if(has_3_in_hand){
       moves.drop_set = "";
     }
@@ -60,9 +60,9 @@ function drawCard(gameState, user_id, init){
     return gameState;
   }
   if(user_id === gameState.host){
-    gameState.hands[0] = gameState.hands[0].concat(gameState.deck.splice(0,1));
+    gameState.hands[0] = gameState.hands[0].concat(gameState.deck.splice(0, 1));
   } else {
-    gameState.hands[1] = gameState.hands[1].concat(gameState.deck.splice(0,1));
+    gameState.hands[1] = gameState.hands[1].concat(gameState.deck.splice(0, 1));
   }
   return gameState;
 }
@@ -139,7 +139,7 @@ function filterGameStateForUser(gameState, user_id){
     discard: [],
     hand: [],
     opponent_hand: 0
-  }
+  };
   if(gameState.discard.length !== 0){
     filteredGS.discard = gameState.discard[gameState.discard.length - 1];
   }
@@ -202,21 +202,21 @@ function check3OfAKind(user_hand) {
 
 function groupRanks(hand) {
   return hand.reduce(function(counter, item) {
-      var p = item[0];
-      counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
-      return counter;
-  },{})
+    var p = item[0];
+    counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+    return counter;
+  }, {});
 }
 
 function groupDropPile(drop_pile){
   return drop_pile.reduce(function(counter, item) {
-      var p = item[0];
-      if(!counter.hasOwnProperty(p)){
-        counter[p] = [];
-      }
-      counter[p].push(item);
-      return counter;
-  },{})
+    var p = item[0];
+    if(!counter.hasOwnProperty(p)){
+      counter[p] = [];
+    }
+    counter[p].push(item);
+    return counter;
+  }, {});
 }
 
 

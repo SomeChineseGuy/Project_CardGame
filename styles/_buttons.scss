@@ -24,6 +24,11 @@
   flex-direction: column;
 }
 
+button:disabled,
+button[disabled]{
+	opacity: 0;
+}
+
 .play {
   margin-bottom: 1em;
 }

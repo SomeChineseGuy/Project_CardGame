@@ -168,10 +168,12 @@ const players = {
   host: {
     id: null,
     socket: null,
+    username: null
   },
   guest: {
     id: null,
     socket: null,
+    username: null
   },
   match : null
 };
@@ -195,7 +197,9 @@ game.on('connection', function(socket) {
       const deck = deckConstructor.getDeck();
       const startGameState = rummy.startGame(deck, players.host.id, players.guest.id);
       gameState = rummy.drawCard(startGameState,players.host.id, true);
+      console.log("GAME STATE =======================", gameState);
       const hostView = rummy.filterGameStateForUser(gameState, players.host.id);
+      hostView.moves = rummy.getMoves(gameState, players.host.id);
       const guestView = rummy.filterGameStateForUser(gameState, players.guest.id);
       players.host.socket.emit('start game', hostView);
       players.host.socket.emit('firstTurn');
@@ -211,26 +215,29 @@ game.on('connection', function(socket) {
   });
   socket.on('disconnect', () =>{
     if (players.host.socket && socket.id === players.host.socket.id ){
-      insertWinner (players.match, players.host.id);
+      insertWinner (players.match, players.guest.id);
       resetPlayer(players.host);
-      socket.broadcast.emit('winner');
+      socket.broadcast.emit('winner', players.guest.id);
       console.log(players);
     } else if (players.guest.socket && socket.id === players.guest.socket.id) {
-      insertWinner (players.match, players.guest.id);
+      insertWinner (players.match, players.host.id);
       resetPlayer(players.guest);
-      socket.broadcast.emit('winner');
+      socket.broadcast.emit('winner', players.host.id);
       console.log(players);
     }
   });
+
   socket.on('draw', (socketid)=> {
     const playerId = userID(socketid);
     const opponentId = oppID(socketid);
     gameState = rummy.drawCard(gameState, playerId, false);
-    const playerMoves = rummy.getMoves(gameState, playerId, false);
-    console.log(gameState);
+    const playerMoves = rummy.getMoves(gameState, playerId);
+    console.log(playerMoves);
     const playerView = rummy.filterGameStateForUser(gameState, playerId);
+    playerView.moves = playerMoves;
+    console.log(playerView)
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
-    userSocket(socketid).emit('new state', playerView, playerMoves);
+    userSocket(socketid).emit('new state', playerView);
     oppSocket(socketid).emit('new state', oppView);
   });
 
@@ -238,7 +245,9 @@ game.on('connection', function(socket) {
     const playerId = userID(socketid);
     const opponentId = oppID(socketid);
     gameState = rummy.drawCardFromDiscard(gameState, playerId);
+    const playerMoves = rummy.getMoves(gameState, playerId);
     const playerView = rummy.filterGameStateForUser(gameState, playerId);
+    playerView.moves = playerMoves;
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
     userSocket(socketid).emit('new state', playerView);
     oppSocket(socketid).emit('new state', oppView);
@@ -248,7 +257,9 @@ game.on('connection', function(socket) {
     const playerId = userID(socketid);
     const opponentId = oppID(socketid);
     gameState = rummy.drawAllCardsFromDiscard(gameState, playerId);
+    const playerMoves = rummy.getMove(gameState, playerId);
     const playerView = rummy.filterGameStateForUser(gameState, playerId);
+    playerView.moves = playerMoves;
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
     userSocket(socketid).emit('new state', playerView);
     oppSocket(socketid).emit('new state', oppView);
@@ -257,19 +268,49 @@ game.on('connection', function(socket) {
   socket.on('discard', (socketid) => {
     const playerId = userID(socketid);
     const opponentId = oppID(socketid);
-    // gameState = rummy.discardCard(gameState, playerId, );
-    console.log(gameState);
+    const discardID = gameState.hands[0][0][2];
+    console.log('DISCARD ID =====================', discardID);
+    gameState = rummy.discardCard(gameState, playerId, discardID);
+    console.log('DISCARD gameState ====================', gameState);
     if(rummy.checkWinnerCondition(gameState, playerId)){
       userSocket(socketid).emit('winner');
       oppSocket(socketid).emit('loser');
       return; //update
     } else {
+      const playerMoves = rummy.getMoves(gameState, playerId);
       const playerView = rummy.filterGameStateForUser(gameState, playerId);
       const oppView = rummy.filterGameStateForUser(gameState, opponentId);
       userSocket(socketid).emit('new state', playerView);
       userSocket(socketid).emit('waitTurn');
       oppSocket(socketid).emit('new state', oppView);
-      oppSocket(socketid).emit('turnStart');
+      oppSocket(socketid).emit('startTurn');
     }
+  });
+
+  socket.on('dropSet', (socketid) => {
+    const playerId = userID(socketid);
+    const opponentId = oppID(socketid);
+    gameState = rummy.layDownSet(gameState, playerId);
+    const playerMoves = rummy.getMove(gameState, playerId);
+    playerView.moves = playerMoves;
+    if(rummy.checkWinnerCondition(gameState, playerId)){
+      userSocket(socketid).emit('winner');
+      oppSocket(socketid).emit('loser');
+      return;
+    } else {
+      const playerView = rummy.filterGameStateForUser(gameState, playerId);
+      const oppView = rummy.filterGameStateForUser(gameState, opponentId);
+      userSocket(socketid).emit('new state', playerView);
+      oppSocket(socketid).emit('new state', oppView);
+    }
+  });
+
+  socket.on('attachOne', (socket) => {
+    const playerId = userID(socketid);
+    const opponentId = oppID(socketid);
+
   })
+
+
+
 });

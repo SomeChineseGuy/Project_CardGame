@@ -39,7 +39,8 @@
        <section class="deck">DECK</section>
        <section id="discard">DISCARD</section>
       {{#each hand}}
-        <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"></span>
+        <span>{{this}}</span>
+        <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
         {{/each}}
     <div class="start-turn">
       <button class='play start draw'>Draw from deck</button>
@@ -48,8 +49,8 @@
     </div>
     <div class="mid-turn">
       <button class='play mid discard'>Discard and end turn</button>
-      <button class="cool" class='play mid dropSet'>Drop matching set</button>
-      <button class="cool" class='play mid attachOne'>Attach card to drop pile</button>
+      <button class='cool play mid dropSet'>Drop matching set</button>
+      <button class='cool play mid attachOne'>Attach card to drop pile</button>
     </div>
     </script>
     <script type="text/javascript" src="/scripts/game.js"></script>

@@ -18,7 +18,7 @@
 
   function endTurn() { $('.play').prop('disabled', true)}
   function endStart() { $('.play.start').prop('disabled', true)}
-  function startTurn() {$('.play.start').prop('disabled', false)}
+  function startTurn() {$('.play').prop('disabled', false)}
 
 
   Handlebars.registerHelper('times', function(n, block) {
@@ -35,7 +35,6 @@
     renderShuffle();
   });
   socket.on('game ready', () => {
-    $('body').append("<p class='getready'>Game starting</p>");
     setTimeout(() => {$('#shuffleAnimation').empty();}, 5000);
 
   });
@@ -49,11 +48,16 @@
     endTurn();
     $('body').append("<p class='waiting'>Waiting for Opponent</p>");
     });
-  socket.on('turnStart', () => {
+  socket.on('startTurn', () => {
     startTurn();
-    $('.waiting').empty();
+    $('p.waiting').remove();
+  })
+  socket.on('new state', (stateData) => {
+    renderPage(stateData);
+    console.log(stateData);
+
   });
-  socket.on('new state', (newState, moves) => console.log(newState, moves));
+
   socket.on('winner', () => {
     alert('you win!');
     setTimeout(()=> window.location = '/', 2000);

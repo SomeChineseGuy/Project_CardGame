@@ -60,9 +60,9 @@ function drawCard(gameState, user_id, init){
     return gameState;
   }
   if(user_id === gameState.host){
-    gameState.hands[0].push(gameState.deck.splice(0,1));
+    gameState.hands[0] = gameState.hands[0].concat(gameState.deck.splice(0,1));
   } else {
-    gameState.hands[1].push(gameState.deck.splice(0,1));
+    gameState.hands[1] = gameState.hands[1].concat(gameState.deck.splice(0,1));
   }
   return gameState;
 }
@@ -72,7 +72,7 @@ function drawCardFromDiscard(gameState, user_id) {
     return gameState;
   }
   const user_index = gameState.host === user_id ? 0 : 1;
-  gameState.hands[user_index].push(gameState.discard.pop());
+  gameState.hands[user_index] = gameState.hands[user_index].concat(gameState.discard.pop());
   return gameState;
 }
 

@@ -21,6 +21,9 @@ function startGame(deck, host_id, guest_id){
   init_state.deck = deck;
   init_state.host = host_id;
   init_state.guest = guest_id;
+  init_state.discard = [],
+  init_state.drop_pile = [];
+  init_state.finished = false;
   return init_state;
 }
 

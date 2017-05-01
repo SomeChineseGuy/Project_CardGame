@@ -81,29 +81,6 @@ app.get('/', (req, res) => {
   })
 });
 
-
-
-// TEST FOR TEMPLATE!!!!!!!!!!!!!!!!!!
-app.get('/json', (req, res) => {
-  const user2 = {
-    deck: 30,
-    discard: [1, 0, 1],
-    userhand: [[1, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 10], [4, 3, 8], [5, 3, 9], [6, 3, 10], [7, 3, 8], [8, 3, 9], [9, 3, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
-               [0, 1, 7], [1, 1, 8], [2, 1, 9], [3, 1, 11], [4, 1, 8], [5, 1, 9], [6, 1, 11], [7, 1, 8], [8, 1, 9], [9, 1, 11], [10, 1, 8], [11, 1, 9]],
-    oppHandCount: 5,
-    dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
-    availablePlays: {
-      draw: 0,
-      takeTop: 0,
-      takeAll: 0,
-      drop3: 0,
-      drop1: 0,
-      discard: 0
-    }
-  };
-  res.json(user2);
-});
-
 // knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
 // .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
 // .where('sessions.user_id', user_id).then((row) => {
@@ -111,8 +88,6 @@ app.get('/json', (req, res) => {
 // }).catch((error) => {
 //   console.log(error.toString());
 // });
-
-
 
 app.get('/login/:id', (req, res) => {
   knex('users')
@@ -150,54 +125,10 @@ app.get('/game', function(req, res) {
 });
 
 
-// TEST CSS ONLY
-
-
-app.get('/test', function(req, res) {
-  if(players.host.id && players.guest.id){
-    res.redirect('/');
-    return;
-  }
-  res.render("Css-test", user2);
-});
-
-
-
-
-  const user2 = {
-    deck: 30,
-    discard: [1, 0, 1],
-    userhand: [[1, 3, 7], [1, 3, 8], [2, 3, 9], [3, 3, 10], [4, 3, 8], [5, 3, 9], [6, 3, 10], [7, 3, 8], [8, 3, 9], [9, 3, 10], [10, 0, 8], [11, 0, 9], [12, 0, 10],
-               [0, 1, 7], [1, 1, 8], [2, 1, 9], [3, 1, 11], [4, 1, 8], [5, 1, 9], [6, 1, 11], [7, 1, 8], [8, 1, 9], [9, 1, 11], [10, 1, 8], [11, 1, 9]],
-    oppHandCount: 5,
-    dropPile: [[13, 4, 52], [13, 3, 51], [13, 2, 50]],
-    availablePlays: {
-      draw: 0,
-      takeTop: 0,
-      takeAll: 0,
-      drop3: 0,
-      drop1: 0,
-      discard: 0
-    }
-  };
-
-
-
-
-
-
-
 app.get('/about', function(req, res, next) {
   res.render('about');
 });
 
-app.get('/about/shuffle1', function(req, res, next) {
-  res.render('shuffle1');
-});
-
-app.get('/about/shuffle2', function(req, res, next) {
-  res.render('shuffle2');
-});
 
 server.listen(PORT, () => {
   console.log('Example app listening on port ' + PORT);
@@ -239,8 +170,8 @@ function insertWinner (match, winner){
 }
 
 
-const startGameState = rummy.startGame();
-let prevGameState, gameState;
+
+let gameState;
 
 const players = {
   host: {
@@ -273,8 +204,8 @@ game.on('connection', function(socket) {
       insertMatchInfo();
       game.emit('game ready');
       const deck = deckConstructor.getDeck();
-      const startGameState = rummy.startGame(deck, players.host.id, players.guest.id);
-      gameState = rummy.drawCard(startGameState,players.host.id, true);
+      gameState = rummy.startGame(deck, players.host.id, players.guest.id);
+      gameState = rummy.drawCard(gameState,players.host.id, true);
       const hostView = rummy.filterGameStateForUser(gameState, players.host.id);
       hostView.moves = rummy.getMoves(gameState, players.host.id, false);
       const guestView = rummy.filterGameStateForUser(gameState, players.guest.id);
@@ -305,6 +236,7 @@ game.on('connection', function(socket) {
     playerView.moves = playerMoves;
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
     userSocket(socketid).emit('new state', playerView);
+    userSocket(socketid).emit('midStart');
     oppSocket(socketid).emit('new state', oppView);
   });
 
@@ -317,6 +249,7 @@ game.on('connection', function(socket) {
     playerView.moves = playerMoves;
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
     userSocket(socketid).emit('new state', playerView);
+    userSocket(socketid).emit('midStart');
     oppSocket(socketid).emit('new state', oppView);
   });
 
@@ -329,6 +262,7 @@ game.on('connection', function(socket) {
     playerView.moves = playerMoves;
     const oppView = rummy.filterGameStateForUser(gameState, opponentId);
     userSocket(socketid).emit('new state', playerView);
+    userSocket(socketid).emit('midStart');
     oppSocket(socketid).emit('new state', oppView);
   });
 
@@ -344,12 +278,14 @@ game.on('connection', function(socket) {
     if(rummy.checkWinnerCondition(gameState, playerId, true)){
       userSocket(socketid).emit('winner');
       oppSocket(socketid).emit('loser');
-      return; //update
+      return;
     } else {
-      const playerMoves = rummy.getMoves(gameState, playerId, false, true);
+      const playerMoves = rummy.getMoves(gameState, playerId, false);
       const playerView = rummy.filterGameStateForUser(gameState, playerId);
+      playerView.moves = playerMoves;
       const oppView = rummy.filterGameStateForUser(gameState, opponentId);
       const oppMoves = rummy.getMoves(gameState, opponentId, true);
+      oppView.moves = oppMoves;
       userSocket(socketid).emit('new state', playerView);
       userSocket(socketid).emit('waitTurn');
       oppSocket(socketid).emit('new state', oppView);
@@ -392,7 +328,5 @@ game.on('connection', function(socket) {
     oppSocket(socketid).emit('new state', oppView);
     }
   })
-
-
 
 });

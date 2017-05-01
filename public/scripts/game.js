@@ -14,11 +14,9 @@
                           .append(pageTemplate(stateData));
     }
 
-
   function endTurn() { $('.play').prop('disabled', true)}
   function endStart() { $('.play.start').prop('disabled', true)}
-  function startTurn() {$('.play').prop('disabled', false)}
-
+  function startTurn() {$('.play.start').prop('disabled', false)}
 
 
 
@@ -48,6 +46,7 @@
       $('body').append("<p class='waiting'>Waiting for Opponent</p>");
     });
     socket.on('startTurn', () => {
+      startTurn();
       $('p.waiting').remove();
     });
     socket.on('new state', (stateData) => {

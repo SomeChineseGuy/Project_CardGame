@@ -43,12 +43,24 @@
     <section class="deck"></section>
     <section class="deck2"></section>
     <section class="deck3"></section>
-    <section id="discard">DISCARD</section>    
+    <section id="discard">
+         <span class="card-front" data-rank-idx="{{discard.[0]}}" data-suit-idx="{{discard.[1]}}"></span>
+       </section>
     <div class="player">
      {{#each hand}}
-      <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
+      <span class="card-front pHand" data-id-idx="{{this.[2]}}" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
       {{/each}}
     </div>
+    <section class=“dropPile”>
+      {{#each drop_pile}}
+      <span class='card-set'>
+       <span class='card-front' data-suit-idx={{this.[0].[1]}} data-rank-idx={{this.[0].[0]}}>{{this}}</span>
+       <span class='card-front' data-suit-idx={{this.[1].[1]}} data-rank-idx={{this.[1].[0]}}></span>
+       <span class='card-front' data-suit-idx={{this.[2].[1]}} data-rank-idx={{this.[2].[0]}}></span>
+       </span>
+       {{/each}}
+
+     </section>
       <div class="buttons">
         <div class='start-turn'>
          <button class='play start draw round yellow' {{moves.draw}}>Draw <span class="round">Draw the top card from the deck.</span></button>
@@ -73,46 +85,6 @@
       </div>
 
       </div>
-    </script>
-
-
-
-
-    <!-- Change opacity to zero with time -->
-      <section class="hand" id='hand-container'></section>
-      <script id="handTemp" type="text/x-handlebars-template">
-
-
-
-      <section id="opponent-position" class="opponent-hand">
-        {{#times opponent_hand}}
-        <div class="opponent-cards"></div>
-        {{/times}}
-      </section>
-
-       <section id="discard">
-         <span class="card-front" data-rank-idx="{{discard.[0]}}" data-suit-idx="{{discard.[1]}}"></span>
-       </section>
-       <section class="deck"></section>
-       <section class="deck2"></section>
-       <section class="deck3"></section>
-
-     <section class=“dropPile”>
-      {{#each drop_pile}}
-      <span class=‘card-set’>
-       <span class=‘card-front’ data-suit-idx={{this.[0].[1]}} data-rank-idx={{this.[0].[0]}}>{{this}}</span>
-       <span class=‘card-front’ data-suit-idx={{this.[1].[1]}} data-rank-idx={{this.[1].[0]}}></span>
-       <span class=‘card-front’ data-suit-idx={{this.[2].[1]}} data-rank-idx={{this.[2].[0]}}></span>
-       </span>
-       {{/each}}
-
-     </section>
-
-       <div class="player">
-      {{#each hand}}
-        <span></span>
-        <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"></span>
-        {{/each}}
     </script>
     <script type="text/javascript" src="/scripts/game.js"></script>
   </body>

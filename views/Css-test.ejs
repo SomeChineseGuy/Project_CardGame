@@ -9,58 +9,33 @@
 
   </head>
   <body>
-    
-    <div id="nav-bar">
-    <a href="/">Home page</a>
-    <a href="/logout">Logout</a>
-    </div>
-    
-    <div class="deck2"></div>
-    <div class="deck3"></div>
 
 
-    <section class="deck"></section>
-    <section id="discard">DISCARD</section>
-    <section id="opponent-position" class="opponent-hand">
-    <div class="opponent-cards"></div>
-    </section>
-    <section class="dropPile">
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
-      </span>
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
-      </span>
-      <span class=card-set>
-        <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
-      </span>
 
-    </section>
-    <section class="x" id='hand-container'>
-    <script id="hand-template" type="text/x-handlebars-template">
-      {{#each userhand}}
-        <span class="card-front" data-rank-idx="{{this.[0]}}" data-suit-idx="{{this.[1]}}"> </span>
-      {{/each}}
-     </section>
-    </script>
-    <div class="buttons">
-      <div class"start-turn">
-        <button class='play start draw'>Draw from deck</button>
-        <button class='play start takeTop'>Draw top discard</button>
-        <button class='play start takeAll'>Take all discard</button>
+ <div class="buttons">
+      <div class='start-turn'>
+        <button class='play start draw round yellow' {{moves.draw}}>Draw<span class="round">Drop a set of 3 or 4 cards from your hand.</span></button>
+        </div>
+       <div class='start-turn'>
+        <button class='play start takeTop round yellow' {{moves.take_top}}>Discard<span class="round">Drop a set of 3 or 4 cards from your hand.</span></button>
+        </div>
+        <div class='start-turn'>
+        <button class='play start takeAll round yellow' {{moves.take_all}}>All Discard<span class="round">Drop a set of 3 or 4 cards from your hand.</span></button>
       </div>
-      <div class"mid-turn">
-        <button class='play mid discard'>Discard and end turn</button>
-        <button class="cool" class='play mid dropSet'>Drop matching set</button>
-        <button class="cool" class='play mid attachOne'>Attach card to drop pile</button>
       </div>
-    </div>
+
+      <div class="buttons2">
+      <div class='mid-turn'>
+        <button class='play mid dropSet round blue cool' {{moves.drop_set}}>Drop <span class="round">Discarding your card will end your turn.</span></button>
+      </div>
+      <div class='mid-turn'>
+        <button class='play mid attachOne round blue cool' {{moves.attach_one}}>Attach <span class="round">Discarding your card will end your turn.</span></button>
+      </div>
+      <div class='mid-turn'>
+        <button class='play mid discard round red' {{moves.discard}}>Discard<span class="round">Discarding your card will end your turn.</span> </button>
+      </div>
+      </div>
+
+
   </body>
 </html>

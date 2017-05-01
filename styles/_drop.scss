@@ -1,24 +1,30 @@
-// .dropPile {
-//   .card-front{
-//     position:absolute;
-//     transition: transform 1s;
-//     left: 50px;
-//     transform-origin: 50% 100%;
-//     &:hover {
-//       box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
-//       cursor: unset;
-//       @for $i from 1 through 4 {
-//       .card-front:nth-child(#{$i}){
-//       transform: translate(($i * 15px) - 15px) rotate(($i * 10deg) - 15deg);
-//       }
-//     }
-//     }
-//   }
-// }
+.dropPile {
+ position:relative;
+ z-index: 3;
+ padding-top: 5em;
+ right: 6em;
+ width: 750;
+  .card-front{
+    position:absolute;
+    transition: transform 1s;
+    left: 50px;
+    transform-origin: 50% 100%;
+  }
+  &:hover{
+    @for $i from 1 through 4 {
+      .card-front:nth-child(#{$i}){
+        transform: translate(($i * 15px) - 10px) rotate(($i * 8deg) - 12deg);
+      }
+    }
+  }
+}
 
+.dropPile .card-front:hover {
+	box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
+  cursor: unset;
+}
 
-// .card-set {
-//   position:relative;
-//   margin: 3em;
-// }
-
+.card-set {
+  position:relative;
+  margin: 4.2em;
+}

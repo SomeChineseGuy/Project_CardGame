@@ -1,21 +1,21 @@
 const init_state = {
-    deck: [],
-    host: 0,
-    guest: 0,
-    discard: [],
-    drop_pile: [],
-    hands: [[], []],
-    finished: false
+  deck: [],
+  host: 0,
+  guest: 0,
+  discard: [],
+  drop_pile: [],
+  hands: [[], []],
+  finished: false
 };
 
 const init_moves = {
-    draw: "",
-    take_top: "",
-    take_all: "",
-    drop_set: "disabled",
-    attach_one: "disabled",
-    discard: "disabled"
-}
+  draw: "",
+  take_top: "",
+  take_all: "",
+  drop_set: "disabled",
+  attach_one: "disabled",
+  discard: "disabled"
+};
 
 function startGame(deck, host_id, guest_id){
   init_state.deck = deck;
@@ -24,7 +24,7 @@ function startGame(deck, host_id, guest_id){
   return init_state;
 }
 
-function getMoves(gameState, user_id, first_move, last_move){
+function getMoves(gameState, user_id, first_move){
   if(first_move){
     return init_moves;
   } else {
@@ -39,10 +39,7 @@ function getMoves(gameState, user_id, first_move, last_move){
       drop_set: "disabled",
       attach_one: "disabled",
       discard: ""
-    }
-    if(last_move) {
-      moves.discard = "disabled";
-    }
+
     if(has_3_in_hand){
       moves.drop_set = "";
     }
@@ -63,9 +60,9 @@ function drawCard(gameState, user_id, init){
     return gameState;
   }
   if(user_id === gameState.host){
-    gameState.hands[0] = gameState.hands[0].concat(gameState.deck.splice(0,1));
+    gameState.hands[0] = gameState.hands[0].concat(gameState.deck.splice(0, 1));
   } else {
-    gameState.hands[1] = gameState.hands[1].concat(gameState.deck.splice(0,1));
+    gameState.hands[1] = gameState.hands[1].concat(gameState.deck.splice(0, 1));
   }
   return gameState;
 }
@@ -96,16 +93,18 @@ function layDownSet(gameState, user_id){
   const user_index = gameState.host === user_id ? 0 : 1;
   const user_hand = gameState.hands[user_index];
   const rankGroups =  groupRanks(user_hand);
+  let rank_to_drop;
   for(let rank in rankGroups){
     if(rankGroups[rank] >= 3){
+      rank_to_drop = rank;
       gameState.drop_pile = gameState.drop_pile.concat(user_hand.filter(card => {
         return card[0] == rank;
       }));
-      gameState.hands[user_index] = user_hand.filter(card => {
-        return card[0] != rank;
-      });
     }
   }
+  gameState.hands[user_index] = user_hand.filter(card => {
+    return card[0] != rank_to_drop;
+  });
   return gameState;
 }
 
@@ -142,7 +141,7 @@ function filterGameStateForUser(gameState, user_id){
     discard: [],
     hand: [],
     opponent_hand: 0
-  }
+  };
   if(gameState.discard.length !== 0){
     filteredGS.discard = gameState.discard[gameState.discard.length - 1];
   }
@@ -162,17 +161,22 @@ function filterGameStateForUser(gameState, user_id){
   return filteredGS;
 }
 
-function checkWinnerCondition(gameState, user_id){
+function checkWinnerCondition(gameState, user_id, after_discard){
   const user_index = gameState.host === user_id ? 0 : 1;
   const opponent_index = gameState.host === user_id ? 1 : 0;
   if(gameState.deck.length === 0 && gameState.discard.length === 0){
     return gameState.hands[user_index].length < gameState.hands[opponent_index].length;
   }
-  if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
-    return true;
+  if(after_discard){
+    if(gameState.hands[user_index].length === 0 ){
+      return true;
+    }
   } else {
-    return false;
+     if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
+        return true;
+      }
   }
+  return false;
 }
 
 function isSetValid(set, rank){
@@ -205,21 +209,21 @@ function check3OfAKind(user_hand) {
 
 function groupRanks(hand) {
   return hand.reduce(function(counter, item) {
-      var p = item[0];
-      counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
-      return counter;
-  },{})
+    var p = item[0];
+    counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+    return counter;
+  }, {});
 }
 
 function groupDropPile(drop_pile){
   return drop_pile.reduce(function(counter, item) {
-      var p = item[0];
-      if(!counter.hasOwnProperty(p)){
-        counter[p] = [];
-      }
-      counter[p].push(item);
-      return counter;
-  },{})
+    var p = item[0];
+    if(!counter.hasOwnProperty(p)){
+      counter[p] = [];
+    }
+    counter[p].push(item);
+    return counter;
+  }, {});
 }
 
 

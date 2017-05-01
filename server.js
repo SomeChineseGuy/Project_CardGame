@@ -55,6 +55,14 @@ app.get('/', (req, res) => {
   if(req.session.userid){
     username = req.session.username;
   }
+  let user_id = 1;
+  knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
+  .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
+  .where('sessions.user_id', user_id).then((row) => {
+    console.log(row);
+  }).catch((error) => {
+    console.log(error.toString());
+  })
   let games = {};
   knex('games')
       .select('*')
@@ -72,6 +80,20 @@ app.get('/', (req, res) => {
         res.redirect('/');
       });
 });
+
+
+// knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
+// .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
+// .where('id', user_id).the((row) => {
+//   console.log(row);
+// }).catch((error) => {
+//   console.log(error.toStrig());
+// });
+
+// select count(*), sum(case when m.winner_id = 2  then 1 else 0 end)
+// from sessions s
+// join matches m on m.id = s.match_id
+// where s.user_id = 2;
 
 
 app.get('/login/:id', (req, res) => {

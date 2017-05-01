@@ -9,9 +9,10 @@
     <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
   </head>
   <body>
-  <div id="nav-bar"></div>
+  <div id="nav-bar">
     <a href="/">Home page</a>
     <a href="/logout">Logout</a>
+  </div>
     <section id="shuffleAnimation"></section>
     <script id="shuffleAnim" type="text/x-handlebars-template">
       <div class="hold">
@@ -27,6 +28,9 @@
         </div>
       </div>
     </script>
+
+
+
 
     <!-- Change opacity to zero with time -->
       <section class="hand" id='hand-container'></section>
@@ -45,6 +49,28 @@
        <section class="deck2"></section>
        <section class="deck3"></section>
 
+
+    <section class="dropPile">
+      <span class='card-set'>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
+      </span>
+      <span class='card-set'>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
+      </span>
+      <span class=card-set>
+        <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
+      </span>
+
+
+
+       
        <div class="player">
       {{#each hand}}
         <span>{{this}}</span>
@@ -65,5 +91,7 @@
       </div>
     </script>
     <script type="text/javascript" src="/scripts/game.js"></script>
+    <div class="win"> </div>
+    <div class="lose"> </div>
   </body>
 </html>

@@ -35,12 +35,12 @@
         <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
         <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
       </span>
-        <span class=card-set>
-      <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
-        </span>
+      <span class=card-set>
+        <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
+        <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
+      </span>
 
     </section>
     <section class="x" id='hand-container'>
@@ -64,95 +64,3 @@
     </div>
   </body>
 </html>
-<!--
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Game</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js'></script>
-    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js" integrity="sha256-rMOSOM5HDzVEMoVZTv2189+RKSTSgY5ZKfTfap7q2zE=" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <nav id="nav-bar">
-    <a href="/">Home page</a>
-    <a href="/logout">Logout</a>
-    <section id="shuffleAnimation"></section>
-    <script id="shuffleAnim" type="text/x-handlebars-template">
-      <div class="hold">
-        <div class="inside">
-        {{#times 16}}
-          <div class="cards"></div>
-        {{/times}}
-        </div>
-        <div class="inside what">
-        {{#times 16}}
-          <div class="cards"></div>
-        {{/times}}
-        </div>
-      </div>
-    </script>
-
-      <section class="hand" id='hand-container'></section>
-      <script id="handTemp" type="text/x-handlebars-template">
-
-
-    <section class="dropPile">
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=1></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=1></span>
-      </span>
-      <span class='card-set'>
-        <span class='card-front' data-suit-idx=1 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=2 data-rank-idx=2></span>
-        <span class='card-front' data-suit-idx=3 data-rank-idx=2></span>
-      </span>
-      <span class='card-set'>
-      <span class='card-front' data-suit-idx=0 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=1 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=2 data-rank-idx=3></span>
-      <span class='card-front' data-suit-idx=3 data-rank-idx=3></span>
-      </span>
-
-
-
-
-      <section id="opponent-position" class="opponent-hand">
-        {{#times opponent_hand}}
-        <div class="opponent-cards"></div>
-        {{/times}}
-      </section>
-       <section class="deck">DECK</section>
-       <section id="discard">DISCARD</section>
-      {{#each hand}}
-        <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"></span>
-        {{/each}}
-       <section class="deck"></section>
-       <section class="deck2"></section>
-       <section class="deck3"></section>
-       <section id="discard">DISCARD</section>
-
-       <div class="player">
-      {{#each hand}}
-        <span class="card-front" data-rank-idx="{{this.rank}}" data-suit-idx="{{this.suit}}"></span>
-        {{/each}}
-        </div>
-
-      <p class="waiting"> WAIT FOR YOUR TURN!!!!!! </p>
-      <div class='start-turn'>
-        <button class='play start draw'>Draw from deck</button>
-        <button class='play start takeTop'>Draw top discard</button>
-        <button class='play start takeAll'>Take all discard</button>
-      </div>
-      <div class='mid-turn'>
-        <button class='play mid dropSet cool'>Drop matching set</button>
-        <button class='play mid attachOne cool'>Attach card to drop pile</button>
-        <button class='play mid discard'>Discard and end turn</button>
-      </div>
-    </script>
-    <script type="text/javascript" src="/scripts/game.js"></script>
-  </body>
-</html>-->

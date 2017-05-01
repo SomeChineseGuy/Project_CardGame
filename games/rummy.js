@@ -39,7 +39,7 @@ function getMoves(gameState, user_id, first_move){
       drop_set: "disabled",
       attach_one: "disabled",
       discard: ""
-    };
+    }
     if(has_3_in_hand){
       moves.drop_set = "";
     }
@@ -82,6 +82,7 @@ function drawAllCardsFromDiscard(gameState, user_id){
   }
   const user_index = gameState.host === user_id ? 0 : 1;
   gameState.hands[user_index] = gameState.hands[user_index].concat(gameState.discard);
+  gameState.hands[user_index].sort((a, b) => a[2] > b[2]);
   gameState.discard = [];
   return gameState;
 }
@@ -93,16 +94,18 @@ function layDownSet(gameState, user_id){
   const user_index = gameState.host === user_id ? 0 : 1;
   const user_hand = gameState.hands[user_index];
   const rankGroups =  groupRanks(user_hand);
+  let rank_to_drop;
   for(let rank in rankGroups){
     if(rankGroups[rank] >= 3){
+      rank_to_drop = rank;
       gameState.drop_pile = gameState.drop_pile.concat(user_hand.filter(card => {
         return card[0] == rank;
       }));
-      gameState.hands[user_index] = user_hand.filter(card => {
-        return card[0] != rank;
-      });
     }
   }
+  gameState.hands[user_index] = user_hand.filter(card => {
+    return card[0] != rank_to_drop;
+  });
   return gameState;
 }
 
@@ -159,17 +162,22 @@ function filterGameStateForUser(gameState, user_id){
   return filteredGS;
 }
 
-function checkWinnerCondition(gameState, user_id){
+function checkWinnerCondition(gameState, user_id, after_discard){
   const user_index = gameState.host === user_id ? 0 : 1;
   const opponent_index = gameState.host === user_id ? 1 : 0;
   if(gameState.deck.length === 0 && gameState.discard.length === 0){
     return gameState.hands[user_index].length < gameState.hands[opponent_index].length;
   }
-  if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
-    return true;
+  if(after_discard){
+    if(gameState.hands[user_index].length === 0 ){
+      return true;
+    }
   } else {
-    return false;
+     if(gameState.hands[user_index].length === 0 || gameState.hands[user_index].length === 1){
+        return true;
+      }
   }
+  return false;
 }
 
 function isSetValid(set, rank){

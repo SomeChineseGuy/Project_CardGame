@@ -46,37 +46,37 @@ expect(rummy.startGame(deck, host_id, guest_id)).to.deep.equal(gameState);
 should enable draw button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).draw).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).draw).to.eq('');
 ```
 
 should enable draw from discard button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.eq('');
 ```
 
 should enable draw all cards from discard button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.eq('');
 ```
 
 should disable drop card button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('disabled');
 ```
 
 should disable drop set card button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('disabled');
 ```
 
 should disable discard card button in the begining of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).discard).to.eq('disabled');
 ```
 
 <a name="rummy-play-options-getmovesgamestate-user_id-first_move-second-moves"></a>
@@ -84,25 +84,25 @@ expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.false;
 should disable draw button in the middle of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).draw).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).draw).to.eq('disabled');
 ```
 
 should disable draw from discard button in the middle of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.eq('disabled');
 ```
 
 should disable draw all cards from discard button in the middle of the turn.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.eq('disabled');
 ```
 
 should enable discard card button.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).discard).to.eq('');
 ```
 
 <a name="rummy-play-options-getmovesgamestate-user_id-first_move-second-moves-players-hand-passes-the-check3ofakind-check"></a>
@@ -110,13 +110,13 @@ expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.true;
 should enable drop card button if the game state passes the check3OfAKind with the discard pile.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('');
 ```
 
 should enable drop set card button if the game state passes the check3OfAKind with the player's hand.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.true;
+expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('');
 ```
 
 <a name="rummy-play-options-getmovesgamestate-user_id-first_move-second-moves-players-hand-does-not-pass-the-check3ofakind-check"></a>
@@ -124,13 +124,13 @@ expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.true;
 should disable drop card button if the game state does not pass the check3OfAKind with the discard pile.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('disabled');
 ```
 
 should disable drop set card button if the game state does not pass the check3OfAKind with the player's hand.
 
 ```js
-expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.false;
+expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('disabled');
 ```
 
 <a name="rummy-user-moves"></a>

@@ -1,7 +1,5 @@
-  $(document).ready(function(){
+ $(document).ready(function(){
 
-
-  // READ
 
     const shuffleText = $('#shuffleAnim').text();
     const shuffTemp = Handlebars.compile(shuffleText);
@@ -15,8 +13,6 @@
       $('#hand-container').empty()
                           .append(pageTemplate(stateData));
     }
-
-
 
 
 
@@ -39,20 +35,17 @@
     // });
     socket.on('start game', (stateData) => {
       renderPage(stateData);
-      
     });
     socket.on('firstTurn', () => endStart());
     socket.on('waitTurn', () => {
-
       $('body').append("<p class='waiting'>Waiting for Opponent</p>");
     });
     socket.on('startTurn', () => {
-
       $('p.waiting').remove();
     });
     socket.on('new state', (stateData) => {
       renderPage(stateData);
-    
+
 
     });
 
@@ -66,28 +59,33 @@
       setTimeout(() => window.location = '/', 1000);
     });
 
+    socket.on('selectCard', (message) => {
+      alert(message);
+    });
+
 
     $(document).on('click', '.draw', (e) => {
       console.log('click');
-    
+      endStart();
       e.preventDefault();
       socket.emit('draw', '/game#' + socket.id);
     });
 
     $(document).on('click', '.takeTop', (e) => {
-    
+      endStart();
       e.preventDefault();
       socket.emit('takeTop', '/game#' + socket.id);
     });
     $(document).on('click', '.takeAll', (e) => {
-    
+      endStart();
       e.preventDefault();
       socket.emit('takeAll', '/game#' + socket.id);
     });
 
     $(document).on('click', '.discard', (e) => {
       e.preventDefault();
-      socket.emit('discard', '/game#' + socket.id);
+      const selectedID = $('.cardSelected').data("idIdx");
+      socket.emit('discard', '/game#' + socket.id, selectedID);
     });
 
     $(document).on('click', '.dropSet', (e) => {
@@ -98,5 +96,11 @@
       e.preventDefault();
       socket.emit('attachOne', '/game#' + socket.id);
     });
-  });
 
+    $(document).on('click', '.pHand', (e) => {
+      $('.pHand').removeClass('cardSelected');
+      $(e.target).addClass('cardSelected');
+    })
+
+
+});

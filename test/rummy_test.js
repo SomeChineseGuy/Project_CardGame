@@ -40,22 +40,22 @@ describe('Rummy', () => {
           first_move = true;
         });
         it('should enable draw button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).draw).to.be.true;
+          expect(rummy.getMoves(gameState, host_id, first_move).draw).to.eq('');
         });
         it('should enable draw from discard button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.be.true;
+          expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.eq('');
         });
         it('should enable draw all cards from discard button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.be.true;
+          expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.eq('');
         });
         it('should disable drop card button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('disabled');
         });
         it('should disable drop set card button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('disabled');
         });
         it('should disable discard card button in the begining of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).discard).to.eq('disabled');
         });
       });
       describe('second moves', () => {
@@ -63,16 +63,16 @@ describe('Rummy', () => {
           first_move = false;
         });
         it('should disable draw button in the middle of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).draw).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).draw).to.eq('disabled');
         });
         it('should disable draw from discard button in the middle of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).take_top).to.eq('disabled');
         });
         it('should disable draw all cards from discard button in the middle of the turn', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.be.false;
+          expect(rummy.getMoves(gameState, host_id, first_move).take_all).to.eq('disabled');
         });
         it('should enable discard card button', () => {
-          expect(rummy.getMoves(gameState, host_id, first_move).discard).to.be.true;
+          expect(rummy.getMoves(gameState, host_id, first_move).discard).to.eq('');
         });
         describe('player\'s hand passes the check3OfAKind check', () => {
           beforeEach(() => {
@@ -80,10 +80,10 @@ describe('Rummy', () => {
             gameState.drop_pile = [[1, 1, 1], [2, 3, 4], [1, 2, 6], [1, 3, 4], [2, 2, 6], [2, 1, 4]];
           });
           it('should enable drop card button if the game state passes the check3OfAKind with the discard pile', () => {
-            expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.true;
+            expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('');
           });
-          it('should enable drop set card button if the game state passes the check3OfAKind with the player\'s hand', () => {
-            expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.true;
+           it('should enable drop set card button if the game state passes the check3OfAKind with the player\'s hand', () => {
+            expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('');
           });
         });
         describe('player\'s hand does not pass the check3OfAKind check', () => {
@@ -91,10 +91,10 @@ describe('Rummy', () => {
             gameState.hands = [[[1, 2, 2], [1, 1, 4], [2, 3, 9]], []];
           });
           it('should disable drop card button if the game state does not pass the check3OfAKind with the discard pile', () => {
-            expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.be.false;
+            expect(rummy.getMoves(gameState, host_id, first_move).attach_one).to.eq('disabled');
           });
           it('should disable drop set card button if the game state does not pass the check3OfAKind with the player\'s hand', () => {
-            expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.be.false;
+            expect(rummy.getMoves(gameState, host_id, first_move).drop_set).to.eq('disabled');
           });
         });
       });

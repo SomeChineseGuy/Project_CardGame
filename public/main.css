@@ -2,11 +2,16 @@
 @import 'https://fonts.googleapis.com/css?family=Wellfleet';
 body {
   background-color: green;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .mid-turn {
   position: absolute;
   right: 0;
+  bottom: 0;
   margin-right: 4em;
   display: flex;
   flex-direction: column;
@@ -15,6 +20,7 @@ body {
 .start-turn {
   position: absolute;
   right: 0;
+  bottom: 0;
   margin-right: 13em;
   display: flex;
   flex-direction: column;
@@ -68,44 +74,6 @@ body {
     transform: scale(0.9);
     box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
   }
-}
-
-.dropPile {
-  position: relative;
-  z-index: 2;
-}
-
-.dropPile .card-front {
-  position: absolute;
-  transition: transform 1s;
-  left: 50px;
-  transform-origin: 50% 100%;
-}
-
-.dropPile:hover .card-front:nth-child(1) {
-  transform: translate(0px) rotate(-5deg);
-}
-
-.dropPile:hover .card-front:nth-child(2) {
-  transform: translate(15px) rotate(5deg);
-}
-
-.dropPile:hover .card-front:nth-child(3) {
-  transform: translate(30px) rotate(15deg);
-}
-
-.dropPile:hover .card-front:nth-child(4) {
-  transform: translate(45px) rotate(25deg);
-}
-
-.dropPile .card-front:hover {
-  box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
-  cursor: unset;
-}
-
-.card-set {
-  position: relative;
-  margin: 3em;
 }
 
 .card-front {
@@ -731,9 +699,10 @@ body {
 }
 
 #nav-bar {
-  background-color: #00a087;
+  background-color: grey;
   width: 100%;
   z-index: 2;
+  height: 3.4em;
 }
 
 #all {
@@ -990,7 +959,7 @@ body {
   right: 0;
   display: flex;
   justify-content: center;
-  margin-top: 2em;
+  margin-top: .5em;
 }
 
 #opponent-position .opponent-cards + .opponent-cards {
@@ -1111,4 +1080,19 @@ body {
   -webkit-box-shadow: 0px 0px 5px 1px black;
   -moz-box-shadow: 0px 0px 5px 1px black;
   box-shadow: 0px 0px 5px 1px black;
+}
+
+#discard {
+  bottom: 45%;
+  left: 52%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  background-size: 6em 7.25em;
+  background-position: center;
+  width: 5.12em;
+  height: 7.93em;
+  border-radius: 5px;
 }

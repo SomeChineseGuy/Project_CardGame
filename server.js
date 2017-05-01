@@ -80,7 +80,7 @@ app.get('/', (req, res) => {
 });
 
 
-<<<<<<< HEAD
+
 // TEST FOR TEMPLATE!!!!!!!!!!!!!!!!!!
 app.get('/json', (req, res) => {
   const user2 = {
@@ -101,7 +101,7 @@ app.get('/json', (req, res) => {
   };
   res.json(user2);
 });
-=======
+
 // knex.select(knex.raw('COUNT(*) AS games, SUM(CASE WHEN matches.winner_id = ? THEN 1 ELSE O END) AS wins', [user_id]))
 // .from('sessions').leftJoin('matches', 'sessions.match_id', 'matches.id')
 // .where('sessions.user_id', user_id).then((row) => {
@@ -109,7 +109,7 @@ app.get('/json', (req, res) => {
 // }).catch((error) => {
 //   console.log(error.toString());
 // });
->>>>>>> af7f1930efd2dfa93765327a91e5623a0a3bf128
+
 
 
 app.get('/login/:id', (req, res) => {

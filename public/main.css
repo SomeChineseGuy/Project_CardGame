@@ -666,7 +666,7 @@ body {
   transform: translate(50px) rotate(20deg);
 }
 
-.dropPile .card-front:hover {
+.cardPile .card-front:hover {
   box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
   cursor: unset;
 }
@@ -1115,50 +1115,6 @@ nav li a:hover {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD
-=======
-.cardPile {
-  position: relative;
-  z-index: 3;
-  padding-top: 5em;
-  right: 6em;
-  width: 750;
-}
-
-.cardPile .card-front {
-  position: absolute;
-  transition: transform 1s;
-  left: 50px;
-  transform-origin: 50% 100%;
-}
-
-.cardPile:hover .card-front:nth-child(1) {
-  transform: translate(5px) rotate(-4deg);
-}
-
-.cardPile:hover .card-front:nth-child(2) {
-  transform: translate(20px) rotate(4deg);
-}
-
-.cardPile:hover .card-front:nth-child(3) {
-  transform: translate(35px) rotate(12deg);
-}
-
-.cardPile:hover .card-front:nth-child(4) {
-  transform: translate(50px) rotate(20deg);
-}
-
-.cardPile .card-front:hover {
-  box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
-  cursor: unset;
-}
-
-.card-set {
-  position: relative;
-  margin: 4.2em;
-}
-
->>>>>>> 9727c8b033a48b0add6f08da6e1b8b685df4ee49
 .buttons {
   position: absolute;
   right: 0;
@@ -1390,10 +1346,6 @@ button.yellow:hover {
   background: rgba(161, 145, 0, 0.7);
 }
 
-<<<<<<< HEAD
 .cardSelected:active {
-=======
-.cardSelected {
->>>>>>> 9727c8b033a48b0add6f08da6e1b8b685df4ee49
   box-shadow: 0 0 .5em .25em green, inset 0 0 .5em .25em lime;
 }

@@ -23,6 +23,7 @@
       <div id='container' style='height: 800px'>
         <% for (let game in games) {  %>
            <a href="/game"><button><%= games[game].name %></button></a>
+           <p><%= wins %> Wins out of <%= number%> games</p>
         <% } %>
       </div>
     </section>

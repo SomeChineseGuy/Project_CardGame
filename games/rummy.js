@@ -72,6 +72,8 @@ function drawCardFromDiscard(gameState, user_id) {
     return gameState;
   }
   const user_index = gameState.host === user_id ? 0 : 1;
+  console.log(gameState.discard);
+  console.log(gameState.discard.pop());
   gameState.hands[user_index] = gameState.hands[user_index].concat(gameState.discard.pop());
   return gameState;
 }

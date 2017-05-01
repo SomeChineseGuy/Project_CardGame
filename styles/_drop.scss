@@ -1,0 +1,28 @@
+.dropPile {
+ position:relative;
+ z-index: 2;
+  .card-front{
+    position:absolute;
+    transition: transform 1s;
+    left: 50px;
+    transform-origin: 50% 100%;
+  }
+  &:hover{
+    @for $i from 1 through 4 {
+      .card-front:nth-child(#{$i}){
+        transform: translate(($i * 15px) - 15px) rotate(($i * 10deg) - 15deg);
+      }
+    }
+  }
+}
+
+.dropPile .card-front:hover {
+	box-shadow: 0 0 .5em .25em crimson, inset 0 0 .5em .25em tomato;
+  cursor: unset;
+}
+
+.card-set {
+  position:relative;
+  margin: 3em;
+}
+
